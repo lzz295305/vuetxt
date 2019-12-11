@@ -35,11 +35,25 @@
       <div class="nav-left">平台福利</div>
     </div>
     <ul class="nav-list">
-      <li class="nav-content">
+      <li class="nav-content1">
         <a href="#" class="nav-link">
-          <span>邀请好友</span>
-          <span>坐享额外收入</span>
-          <img src="#" class="nav-pic">
+          <span class="nav-link-title">邀请好友</span>
+          <span class="nav-link-center">坐享额外收入</span>
+          <i class="iconfont icon-faburenwu"></i>
+        </a>
+      </li>
+      <li class="nav-content2">
+        <a href="#" class="nav-link">
+          <span class="nav-link-title">新手任务</span>
+          <span class="nav-link-center">快速成为猎人</span>
+          <i class="iconfont icon-faburenwu"></i>
+        </a>
+      </li>
+      <li class="nav-content3">
+        <a href="#" class="nav-link">
+          <span class="nav-link-title">日常任务</span>
+          <span class="nav-link-center">领取每日福利</span>
+          <i class="iconfont icon-faburenwu"></i>
         </a>
       </li>
     </ul>
@@ -89,6 +103,17 @@
 
     &-link {
       @include flex-center(column);
+
+      &-title {
+        margin-top: 20px;
+        color: white;
+        font-size: 15px;
+      }
+
+      &-center {
+        margin-top: 10px;
+        color: white;
+      }
     }
 
     &-pic {
@@ -96,10 +121,27 @@
       margin-bottom: 8px;
     }
 
-    &-content {
-      width: 30%;
+    &-content1,
+    &-content2,
+    &-content3 {
+      width: 28%;
       margin: 0 10px 15px 10px;
-      border: 1px solid #de181b;
+    }
+    &-content1 {
+      background-color: #10D58E;
+    }
+    &-content2 {
+      background-color: #3F9EFA;
+    }
+    &-content3 {
+      background-color: #FDC722;
+    }
+
+    .iconfont {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      font-size: 40px;
+      color: white;
     }
   }
 

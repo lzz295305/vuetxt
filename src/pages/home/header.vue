@@ -10,7 +10,7 @@
       @query="getQuery"
       @click.native="goToSearch"
     />
-    <i class="iconfont icon-msg" slot="right"></i>
+    <i class="iconfont icon-xiaoxi" slot="right"></i>
   </me-navbar>
 </template>
 
@@ -66,7 +66,7 @@
       font-size: $icon-font-size;
     }
 
-    .icon-msg{
+    .icon-xiaoxi{
       color: #080808;
     }
   }

@@ -1,6 +1,9 @@
 <template>
   <div class="recommend">
-    <h3 class="recommend-title">热卖推荐</h3>
+    <div class="recommend-center">
+      <h3 class="recommend-title">推荐任务</h3>
+      <a href="#">更多任务</a>
+    </div>
     <div class="loading-container" v-if="!recommends.length">
       <me-loading inline/>
     </div>
@@ -14,13 +17,18 @@
           class="recommend-link"
           :to="{name: 'home-product', params: {id: item.baseinfo.itemId}}"
         >
-          <p class="recommend-pic"><img class="recommend-img" v-lazy="item.baseinfo.picUrlNew"></p>
-          <p class="recommend-name">{{item.name.shortName}}</p>
-          <p class="recommend-origPrice"><del>¥{{item.price.origPrice}}</del></p>
-          <p class="recommend-info">
-            <span class="recommend-price">¥<strong class="recommend-price-num">{{item.price.actPrice}}</strong></span>
-            <span class="recommend-count">{{item.remind.soldCount}}件已售</span>
-          </p>
+          <span class="recommend-pic"><img class="recommend-img" v-lazy="item.baseinfo.picUrlNew"></span>
+          <span class="recommend-name">
+            <p class="recommend-first-info">
+              (纯凯挑战)简单几秒钟赚钱
+            </p>
+            <p class="recommend-second-info">
+              ￥12.00元·120经验
+            </p>
+            <p class="recommend-third-info">
+              129人后截止·365天后结束
+            </p>
+          </span>
         </router-link>
       </li>
     </ul>
@@ -80,91 +88,64 @@
   @import "~assets/scss/mixins";
 
   .recommend {
-    &-title {
-      position: relative;
-      width: 100%;
-      padding: 10px 0;
-      font-size: $font-size-l;
-      text-align: center;
+    &-center {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 10px 10px 10px;
+    }
 
-      &:before,
-      &:after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        width: 40%;
-        height: 1px;
-        background-color: #ddd;
-      }
-      &:before {
-        left: 0;
-      }
-      &:after {
-        right: 0;
-      }
+    &-title {
+      font-size: 20px;
+    }
+    a{
+      color: #3F9EFA;
     }
 
     &-list {
-      @include flex-between();
       flex-wrap: wrap;
     }
 
     &-item {
-      width: 49%;
+      width: 100%;
+      height: 100px;
       background-color: #fff;
       box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-      margin-bottom: 8px;
     }
 
     &-link {
-      display: block;
+      display: flex;
     }
 
     &-pic {
       position: relative;
-      width: 100%;
-      padding-top: 100%;
-      margin-bottom: 5px;
+      width: 30%;
+      padding-top: 30%;
     }
 
     &-img {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 20px;
+      left: 20px;
+      width: 50%;
+      height: 50%;
+      border-radius: 50%;
     }
 
     &-name {
-      height: 36px;
+      height: 100%;
       padding: 0 5px;
+      margin-top: 20px;
       margin-bottom: 8px;
       line-height: 1.5;
       @include multiline-ellipsis();
     }
 
-    &-origPrice {
-      padding: 0 5px;
-      margin-bottom: 8px;
-      color: #ccc;
+    &-first-info {
+      font-size: 17px;
     }
 
-    &-info {
-      @include flex-between();
-      padding: 0 5px;
-      margin-bottom: 8px;
-    }
-
-    &-price {
-      color: #e61414;
-    }
-
-    &-price-num {
-      font-size: 20px;
-    }
-
-    &-count {
-      color: #999;
+    &-second-info{
+      font-size: 15px;
     }
   }
 

@@ -3,6 +3,10 @@
     <header class="g-header-container">
       <home-header :class="{'header-transition': isHeaderTransition}" ref="header"/>
     </header>
+    <br>
+    <br>
+    <br>
+    <br>
     <me-scroll
       :data="recommends"
       pullDown
@@ -13,14 +17,11 @@
       @scroll="scroll"
       @pull-down-transition-end="pullDownTransitionEnd"
       ref="scroll">
-      <br>
-      <br>
-      <br>
-      <br>
       <home-slider ref="slider"/>
       <home-nav/>
       <home-recommend @loaded="getRecommends" ref="recommend"/>
     </me-scroll>
+<!--    返回顶部并且刷新-->
     <div class="g-backtop-container">
       <me-backtop :visible="isBacktopVisible" @backtop="backToTop"/>
     </div>
@@ -111,7 +112,11 @@
 
 <style lang="scss" scoped>
 @import "~assets/scss/mixins";
+
 .home {
- overflow:hidden;width:100%;height:100%;background-color: $bgc-theme;
+  overflow:hidden;
+  width:100%;
+  height:100%;
+  background-color: $bgc-theme;
 }
 </style>
