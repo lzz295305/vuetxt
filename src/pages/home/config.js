@@ -11,51 +11,55 @@ export const navItems = [
   {
     linkUrl: 'https://www.imooc.com',
     picUrl: require('./img/nav-item-1.png'),
-    text: '拍卖'
+    text: '官方任务'
   },
   {
     linkUrl: 'https://www.imooc.com',
     picUrl: require('./img/nav-item-2.png'),
-    text: '拍卖'
+    text: '社区互助'
   },
   {
     linkUrl: 'https://www.imooc.com',
     picUrl: require('./img/nav-item-3.png'),
-    text: '拍卖'
+    text: 'APP试玩'
   },
   {
     linkUrl: 'https://www.imooc.com',
     picUrl: require('./img/nav-item-4.png'),
-    text: '拍卖'
+    text: '众包任务'
   },
   {
     linkUrl: 'https://www.imooc.com',
     picUrl: require('./img/nav-item-5.png'),
-    text: '拍卖'
+    text: '个人问卷'
   },
   {
     linkUrl: 'https://www.imooc.com',
     picUrl: require('./img/nav-item-6.png'),
-    text: '拍卖'
+    text: '联盟问卷'
+  }
+];
+
+export const navItems1 = [
+  // 原nav.uve的数据
+  {
+    linkUrl: 'https://www.imooc.com',
+    picUrl: require('./img/nav-item-1.png'),
+    text: '极速赚'
   },
   {
     linkUrl: 'https://www.imooc.com',
-    picUrl: require('./img/nav-item-7.png'),
-    text: '拍卖'
+    picUrl: require('./img/nav-item-2.png'),
+    text: '游戏赚'
   },
   {
     linkUrl: 'https://www.imooc.com',
-    picUrl: require('./img/nav-item-8.png'),
-    text: '拍卖'
+    picUrl: require('./img/nav-item-3.png'),
+    text: '阅读赚'
   },
   {
     linkUrl: 'https://www.imooc.com',
-    picUrl: require('./img/nav-item-9.png'),
-    text: '拍卖'
-  },
-  {
-    linkUrl: 'https://www.imooc.com',
-    picUrl: require('./img/nav-item-10.png'),
-    text: '拍卖'
+    picUrl: require('./img/nav-item-4.png'),
+    text: '视频赚'
   }
 ];
