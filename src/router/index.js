@@ -16,14 +16,14 @@ const routes = [
     }]
   },
   {
-    path: '/category',
-    name: 'category',
-    component: () => import('pages/category')
+    path: '/skill',
+    name: 'skill',
+    component: () => import('pages/skill')
   },
   {
-    path: '/cart',
-    name: 'cart',
-    component: () => import('pages/cart')
+    path: '/community',
+    name: 'community',
+    component: () => import('pages/community')
   },
   {
     path: '/personal',

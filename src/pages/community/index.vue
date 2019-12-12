@@ -1,12 +1,15 @@
 <template>
-  <div class="search">
-    search
+  <div>
+    社区community
   </div>
 </template>
+
 <script>
   export default {
-    name: 'Search'
+    name: 'Community'
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
+
 </style>

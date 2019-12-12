@@ -3,7 +3,7 @@
     history
   </div> -->
   <div class="history" v-if="historys.length">
-    <h4 class="history-title">历史搜索</h4>
+    <h4 class="history-title">历史记录</h4>
     <transition-group class="g-list" name="list" tag="ul">
       <li
         class="g-list-item"
@@ -22,7 +22,7 @@
       href="javascript:;"
       class="history-btn"
       @click="showConfirm"
-    ><i class="iconfont icon-clear"></i>清空历史搜索</a>
+    ><i class="iconfont icon-clear"></i>确定要清空吗</a>
   </div>
 </template>
 

@@ -6,7 +6,7 @@
       @click="goBack"
     ></i>
     <me-search-box
-      placeholder="开学季有礼，好货5折起"
+      placeholder="搜索"
       slot="center"
       @query="query"
     />

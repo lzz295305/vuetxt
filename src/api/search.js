@@ -10,7 +10,7 @@ export const getSearchHotKeyword = () => {
   }).then(res => {
     // console.log(res);
     res = JSON.parse(res.data.hotKeyWord);
-    if (res && res.owner) { // succeed
+    if (res && res.owner) {
       return res.owner;
     }
 

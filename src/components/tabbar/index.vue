@@ -4,11 +4,11 @@
       <i class="iconfont icon-renwu"></i>
       <span>任务</span>
     </router-link>
-    <router-link class="g-tabbar-item" to="/category">
+    <router-link class="g-tabbar-item" to="/skill">
       <i class="iconfont icon-jineng"></i>
       <span>技能</span>
     </router-link>
-    <router-link class="g-tabbar-item" to="/cart">
+    <router-link class="g-tabbar-item" to="/community">
       <i class="iconfont icon-shequ"></i>
       <span>社区</span>
     </router-link>
