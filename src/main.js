@@ -1,14 +1,17 @@
 import 'babel-polyfill';
 import Vue from 'vue';
 import App from './App';
+import MintUI from 'mint-ui';
 import router from './router';
 // import fastclick from 'fastclick';
 import VueLazyload from 'vue-lazyload';
 
+import 'mint-ui/lib/style.css';
 import './assets/scss/index.scss';
 import 'swiper/dist/css/swiper.css';
 
 // fastclick.attach(document.body);
+Vue.use(MintUI);
 
 Vue.use(VueLazyload, {
   preLoad: 1,

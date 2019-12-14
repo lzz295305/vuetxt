@@ -17,7 +17,9 @@
       @scroll="scroll"
       @pull-down-transition-end="pullDownTransitionEnd"
       ref="scroll">
-      <home-slider ref="slider"/>
+      <div class="g-content-container">
+        <home-slider ref="slider" class="slider"/>
+      </div>
       <home-nav/>
       <home-recommend @loaded="getRecommends" ref="recommend"/>
     </me-scroll>
@@ -118,5 +120,19 @@
   width:100%;
   height:100%;
   background-color: $bgc-theme;
+}
+.g-content-container {
+  height: 180px;
+  padding-top: 0px;
+  width: 95%;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  .slider {
+    overflow: hidden;
+    height: 180px;
+    border-radius: 5px;
+  }
 }
 </style>

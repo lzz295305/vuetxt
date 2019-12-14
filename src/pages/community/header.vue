@@ -1,27 +1,18 @@
 <template>
-
   <me-navbar class="header" v-show="visible">
     <i class="iconfont" slot="left"></i>
-    <!-- <div slot="center">搜索框</div> -->
-    <me-search-box
-      placeholder="搜索任务发布者ID"
-      slot="center"
-      fake
-      @query="getQuery"
-      @click.native="goToSearch"
-    />
+    <span slot="title">猎人讨论区</span>
     <i class="iconfont icon-xiaoxi" slot="right"></i>
   </me-navbar>
 </template>
 
 <script>
   import MeNavbar from 'base/navbar';
-  import MeSearchBox from 'base/search-box';
+
   export default {
     name: 'HomeHeader',
     components: {
-      MeNavbar,
-      MeSearchBox
+      MeNavbar
     },
     data() {
       return {
@@ -35,15 +26,8 @@
       },
       hide() {
         this.visible = false;
-      },
-      getQuery(query) {
-        console.log(query);
-      },
-      goToSearch() {
-        this.$router.push('/search');
       }
     }
-
   };
 </script>
 
@@ -58,8 +42,7 @@
     }
 
     &.header-transition {
-      background-color: $icon-color-default;
-      border-bottom: 1px solid #080808;
+      background-color: $header-bgc-translucent;
     }
 
     .iconfont {

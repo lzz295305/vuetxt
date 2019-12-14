@@ -9,8 +9,8 @@
       <div class="mine-navbar-right" v-if="$slots.right">
         <slot name="right"></slot>
       </div>
-      <h1 class="mine-navbar-title" v-if="title">
-        <span v-text="title"></span>
+      <h1 class="mine-navbar-title" v-if="$slots.title">
+        <slot name="title"></slot>
       </h1>
     </div>
 </template>
@@ -34,7 +34,7 @@
     position: relative;
     @include flex-between();
     height: 50px;
-    background-color: #fff;
+    background-color: whitesmoke;
 
     &-left {
       margin-left: 10px;
@@ -69,6 +69,7 @@
       right: 20%;
       @include flex-center();
       text-align: center;
+      font-size: 15px;
     }
 
     &-text {

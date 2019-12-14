@@ -66,7 +66,7 @@
 
   .slider-wapper {
     width: 100%;
-    height: 183px;
+    height: 180px;
   }
 
   .slider-link {

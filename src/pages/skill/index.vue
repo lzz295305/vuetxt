@@ -5,10 +5,13 @@
     </header>
     <div class="g-content-container">
       <div class="slider">
-        <skill-slider></skill-slider>
+        <skill-slider/>
       </div>
       <div class="main">
-        <category-content :curId="curId"/>
+        <skill-nav/>
+      </div>
+      <div class="tab">
+        <skill-tab/>
       </div>
     </div>
   </div>
@@ -17,12 +20,16 @@
 <script>
   import SkillHeader from './header';
   import SkillSlider from './slider';
+  import SkillNav from './nav';
+  import SkillTab from './tab';
 
   export default {
     name: 'skill',
     components: {
       SkillHeader,
-      SkillSlider
+      SkillSlider,
+      SkillNav,
+      SkillTab
     }
   };
 </script>
@@ -37,7 +44,23 @@
   }
 
   .g-content-container {
+    height: 180px;
+    width: 95%;
     display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    .slider {
+      overflow: hidden;
+      height: 180px;
+      border-radius: 5px;
+    }
+
+    .tab {
+      width: 100%;
+      margin-top: 15px;
+    }
   }
 
 </style>
