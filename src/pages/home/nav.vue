@@ -93,7 +93,6 @@
     &-list {
       margin-top: 20px;
       display: flex;
-      flex-wrap: wrap;
     }
 
     &-item {
@@ -124,7 +123,7 @@
     &-content1,
     &-content2,
     &-content3 {
-      width: 28%;
+      width: 30%;
       margin: 0 10px 15px 10px;
     }
     &-content1 {

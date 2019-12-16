@@ -1,7 +1,4 @@
 <template>
- <!--  <div>
-    hot
-  </div> -->
   <div class="hot">
     <h4 class="hot-title">热门搜索</h4>
     <div class="loading-container" v-if="!hots.length">

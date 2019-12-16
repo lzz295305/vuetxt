@@ -1,10 +1,10 @@
 <template>
   <div class="tab">
     <ul class="tab-title">
-      <li @click="show(true)" class="left">
+      <li @click="show(true)" class="left" :class="{'active': leftIsActive}">
         <span >热门技能</span>
       </li>
-      <li @click="show(false)" class="right">
+      <li @click="show(false)" class="right" :class="{'active': rightIsActive}">
         <span >猎人动态</span>
       </li>
     </ul>
@@ -65,7 +65,9 @@
     name: 'SkillTab',
     data() {
       return {
-        temp: true
+        temp: true,
+        leftIsActive: true,
+        rightIsActive: false
       };
     },
     components: {
@@ -73,6 +75,8 @@
     },
     methods: {
       show(t) {
+        this.leftIsActive = t;
+        this.rightIsActive = !t;
         this.temp = t;
       }
     }
@@ -94,15 +98,16 @@
   }
 
   .left {
-    display: inline-block;
-    border-bottom: 5px solid #AC8D22;
-    line-height: 1px !important;
-    font-size: 15px;
-    font-weight: bold;
   }
-
   .right {
     margin-left: 20px;
+  }
+  .active {
+    font-size: 15px;
+    display: inline-block;
+    border-bottom: 5px solid #AC8D22;
+    line-height: 0.4px;
+    font-weight: bold;
   }
 
   .content {
@@ -123,7 +128,7 @@
   }
 
   .content-img {
-    width: 50px;
+    width: 15%;
     border-radius: 5px;
   }
 

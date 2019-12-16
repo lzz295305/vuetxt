@@ -1,10 +1,10 @@
 <template>
     <div class="tab">
       <ul class="tab-title">
-        <li @click="show(true)" class="left">
+        <li @click="show(true)" class="left" :class="{'active': leftIsActive}">
           <span >热门讨论</span>
         </li>
-        <li @click="show(false)" class="right">
+        <li @click="show(false)" class="right" :class="{'active': rightIsActive}">
           <span>我参与的</span>
         </li>
       </ul>
@@ -45,13 +45,15 @@
     name: 'ComTab',
     data() {
       return {
-        temp: true
+        temp: true,
+        leftIsActive: true,
+        rightIsActive: false
       };
-    },
-    components: {
     },
     methods: {
       show(t) {
+        this.leftIsActive = t;
+        this.rightIsActive = !t;
         this.temp = t;
       }
     }
@@ -71,6 +73,9 @@
     padding: 5px;
     border: 1px solid #cccccc;
     border-radius: 30px;
+  }
+  .active {
+    background-color: #AC8D22;
   }
 
   .content {

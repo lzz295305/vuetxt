@@ -4,6 +4,7 @@
     <i class="iconfont" slot="left"></i>
     <!-- <div slot="center">搜索框</div> -->
     <me-search-box
+      name="search"
       placeholder="搜索任务发布者ID"
       slot="center"
       fake
