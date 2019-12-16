@@ -57,6 +57,10 @@
       border-radius: 5px;
     }
 
+    .main {
+      width: 100%;
+    }
+
     .tab {
       width: 100%;
       margin-top: 15px;
