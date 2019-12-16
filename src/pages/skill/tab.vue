@@ -129,6 +129,7 @@
 
   .content-img {
     width: 15%;
+    height: 15%;
     border-radius: 5px;
   }
 
