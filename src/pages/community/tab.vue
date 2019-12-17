@@ -1,11 +1,11 @@
 <template>
     <div class="tab">
       <ul class="tab-title">
-        <li @click="show(true)" class="left" :class="{'active': leftIsActive}">
-          <span >热门讨论</span>
+        <li @click="show(true)" class="left" :class="{'active': isActive}">
+          热门讨论
         </li>
-        <li @click="show(false)" class="right" :class="{'active': rightIsActive}">
-          <span>我参与的</span>
+        <li @click="show(false)" class="right" :class="{'active': !isActive}">
+          我参与的
         </li>
       </ul>
       <div v-if="temp" class="content">
@@ -46,14 +46,12 @@
     data() {
       return {
         temp: true,
-        leftIsActive: true,
-        rightIsActive: false
+        isActive: true
       };
     },
     methods: {
       show(t) {
-        this.leftIsActive = t;
-        this.rightIsActive = !t;
+        this.isActive = t;
         this.temp = t;
       }
     }
@@ -70,12 +68,23 @@
   }
 
   .tab-title>li {
-    padding: 5px;
-    border: 1px solid #cccccc;
+    border: 1px solid rgba(187, 204, 30, 0.8);
     border-radius: 30px;
+    line-height: 35px;
+    height: 35px;
+    width: 90px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
   }
+
+  .tab-title .right {
+    margin-left: 10px;
+  }
+
   .active {
-    background-color: #AC8D22;
+    background-color: #ac900a;
+    color: whitesmoke;
   }
 
   .content {
