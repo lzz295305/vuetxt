@@ -5,6 +5,16 @@ Vue.use(Router);
 
 const routes = [
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('pages/login')
+  },
+  {
+    path: '/login/rest',
+    name: 'login/rest',
+    component: () => import('pages/login/rest')
+  },
+  {
     path: '/home',
     name: 'home',
     component: () => import('pages/home'),
@@ -37,7 +47,7 @@ const routes = [
   },
   {
     path: '*',
-    redirect: '/home'
+    redirect: '/login'
   }
 ];
 

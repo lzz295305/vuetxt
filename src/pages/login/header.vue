@@ -1,27 +1,17 @@
 <template>
   <me-navbar class="header" v-show="visible">
     <i class="iconfont" slot="left"></i>
-    <!-- <div slot="center">搜索框</div> -->
-    <me-search-box
-      name="search"
-      placeholder="搜索任务发布者ID"
-      slot="center"
-      fake
-      @query="getQuery"
-      @click.native="goToSearch"
-    />
-    <i class="iconfont icon-xiaoxi" slot="right"></i>
+    <span slot="title">重置密码</span>
   </me-navbar>
 </template>
 
 <script>
   import MeNavbar from 'base/navbar';
-  import MeSearchBox from 'base/search-box';
+
   export default {
-    name: 'HomeHeader',
+    name: 'ForgetHeader',
     components: {
-      MeNavbar,
-      MeSearchBox
+      MeNavbar
     },
     data() {
       return {
@@ -35,15 +25,8 @@
       },
       hide() {
         this.visible = false;
-      },
-      getQuery(query) {
-        console.log(query);
-      },
-      goToSearch() {
-        this.$router.push('/search');
       }
     }
-
   };
 </script>
 
@@ -52,8 +35,7 @@
 
   .header {
     &.mine-navbar {
-      /*background-color: $header-bgc-translucent; */
-      background-color: transparent;
+      background-color: #FDE344;
       transition: background-color 0.5s;
     }
 
@@ -63,12 +45,8 @@
     }
 
     .iconfont {
-      color:$icon-color-default;
+      color: $icon-color-default;
       font-size: $icon-font-size;
-    }
-
-    .icon-xiaoxi{
-      color: #080808;
     }
   }
 </style>

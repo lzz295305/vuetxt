@@ -1,12 +1,18 @@
 <template>
-    <div>
-      登录
+    <div class="login">
+      <register/>
     </div>
 </template>
 
 <script>
+  import forget from './forget';
+  import register from './register';
   export default {
-    name: 'index'
+    name: 'Login',
+    components: {
+      forget,
+      register
+    }
   };
 </script>
 

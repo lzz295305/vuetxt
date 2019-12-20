@@ -3,7 +3,7 @@
     <div class="g-view-container">
       <router-view></router-view>
     </div>
-    <div class="g-footer-container">
+    <div class="g-footer-container" v-show="showNav">
       <c-tabbar/>
     </div>
   </div>
@@ -13,6 +13,11 @@
   import CTabbar from 'components/tabbar';
   export default {
     name: 'App',
+    data() {
+      return {
+        showNav: false
+      };
+    },
     components: {
       CTabbar
     }
