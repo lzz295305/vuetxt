@@ -20,10 +20,11 @@ const routes = [
     component: () => import('pages/home'),
     children: [
       {
-        path: 'product/:id',
-        name: 'home-product',
-        component: () => import('pages/product')
-    }]
+        path: 'taskDetail/:id',
+        name: 'home-taskDetail',
+        component: () => import('pages/taskDetail')
+      }
+    ]
   },
   {
     path: '/skill',
@@ -46,12 +47,21 @@ const routes = [
     component: () => import('pages/search')
   },
   {
+    path: '/skillDetail',
+    name: 'skillDetail',
+    component: () => import('pages/skillDetail')
+  },
+  {
+    path: '/moreTask',
+    name: 'home-moreTask',
+    component: () => import('pages/moreTask')
+  },
+  {
     path: '*',
-    redirect: '/login'
+    redirect: '/home'
   }
 ];
 
 export default new Router({
-  // mode: 'hash',
   routes
 });

@@ -10,7 +10,7 @@
     </ul>
     <div v-if="temp" class="content">
       <ul class="tab-data">
-        <li>
+        <li @click="goSkillDetail">
           <div class="content-title">
             <img src="./img/nav-item-1.png" alt="" class="title-img">
             <span>奈黑酱</span>
@@ -78,6 +78,9 @@
         this.leftIsActive = t;
         this.rightIsActive = !t;
         this.temp = t;
+      },
+      goSkillDetail() {
+        this.$router.push('/skillDetail');
       }
     }
   };
@@ -97,8 +100,6 @@
     display: flex;
   }
 
-  .left {
-  }
   .right {
     margin-left: 20px;
   }

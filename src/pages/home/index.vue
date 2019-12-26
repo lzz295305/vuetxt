@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <header class="g-header-container">
-      <home-header :class="{'header-transition': isHeaderTransition}" ref="header"/>
+      <home-header/>
     </header>
     <br>
     <br>
@@ -10,9 +10,7 @@
     <me-scroll
       :data="recommends"
       pullDown
-      pullUp
       @pull-down="pullToRefresh"
-      @pull-up="pullToLoadMore"
       @scroll-end="scrollEnd"
       @scroll="scroll"
       @pull-down-transition-end="pullDownTransitionEnd"
@@ -21,7 +19,7 @@
         <home-slider ref="slider" class="slider"/>
       </div>
       <home-nav/>
-      <home-recommend @loaded="getRecommends" ref="recommend"/>
+      <home-recommend @loaded="getRecommends" ref="recommend" class="home-recommend"/>
     </me-scroll>
 <!--    返回顶部并且刷新-->
     <div class="g-backtop-container">
@@ -38,7 +36,7 @@
   import HomeSlider from './slider';
   import HomeNav from './nav';
   import HomeRecommend from './recommend';
-  import {HEADER_TRANSITION_HEIGHT} from './config';
+
   export default {
     name: 'Home',
     components: {
@@ -52,15 +50,9 @@
     data() {
       return {
         recommends: [],
-        isBacktopVisible: false,
-        isHeaderTransition: false
+        isBacktopVisible: false
       };
     },
-    // created() {
-    //   setTimeout(() =>{
-    //       this.isBacktopVisible = true;
-    //     },1000);
-    // },
     methods: {
       updateScroll() {
       },
@@ -69,46 +61,14 @@
       },
       pullToRefresh(end) {
         this.$refs.slider.update().then(end);
-        // setTimeout(() =>{
-        //   console.log('下拉刷新');
-        //   end();
-        // },1000);
       },
-      pullToLoadMore(end) {
-        this.$refs.recommend.update().then(end).catch(err => {
-          if (err) {
-            console.log(err);
-          }
-          end();
-        });
-      },
-      scroll(translate) {
-        this.changeHeaderStatus(translate);
-      },
-      scrollEnd(translate, scroll, pulling) {
-        if (!pulling) {
-          this.changeHeaderStatus(translate);
-        }
-        this.isBacktopVisible = translate < 0 && -translate > scroll.height;
-      },
-      pullDownTransitionEnd() {
-        this.$refs.header.show();
+      scrollEnd(translate, scroll) {
+        this.isBacktopVisible = translate < 0 && -translate > scroll.height();
       },
       backToTop() {
         this.$refs.scroll && this.$refs.scroll.scrollToTop();
-      },
-      changeHeaderStatus(translate) {
-        if (translate > 0) {
-          this.$refs.header.hide();
-          return;
-        }
-
-        this.$refs.header.show();
-
-        this.isHeaderTransition = -translate > HEADER_TRANSITION_HEIGHT;
       }
     }
-
   };
 </script>
 
@@ -133,6 +93,9 @@
     overflow: hidden;
     height: 180px;
     border-radius: 5px;
+  }
+  .home-recommend {
+    margin-bottom: 30%;
   }
 }
 </style>

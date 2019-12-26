@@ -139,6 +139,7 @@
     &-content3 {
       width: 30%;
       margin: 0 10px 15px 10px;
+      border-radius: 5px;
     }
 
     &-content1 {

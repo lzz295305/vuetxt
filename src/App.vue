@@ -3,7 +3,7 @@
     <div class="g-view-container">
       <router-view></router-view>
     </div>
-    <div class="g-footer-container" v-show="showNav">
+    <div class="g-footer-container" v-if="navShow">
       <c-tabbar/>
     </div>
   </div>
@@ -15,11 +15,21 @@
     name: 'App',
     data() {
       return {
-        showNav: false
+        footNavs: ['/home', '/skill', '/community', '/personal'],
+        navShow: true
       };
     },
     components: {
       CTabbar
+    },
+    watch: {
+      '$route'(to, from) {
+        this.navShow = this.footNavs.some(item => {
+          if (item === to.path) {
+            return true;
+          }
+        });
+      }
     }
   };
 </script>

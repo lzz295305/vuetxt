@@ -8,6 +8,11 @@
       <i class="iconfont icon-jineng"></i>
       <span>技能</span>
     </router-link>
+    <mt-actionsheet
+      :actions="actions"
+      v-model="sheetVisible">
+      <i class="iconfont icon-jineng"></i>
+    </mt-actionsheet>
     <router-link class="g-tabbar-item" to="/community">
       <i class="iconfont icon-shequ"></i>
       <span>社区</span>
@@ -34,8 +39,5 @@
 
   .g-tabbar-item:hover {
     background-color: #fff;
-      .iconfont {
-        transform: scale(1.3);
-      }
   }
 </style>

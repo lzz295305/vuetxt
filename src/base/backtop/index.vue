@@ -5,7 +5,7 @@
       class="mine-backtop"
       v-show="visible"
       @click="backToTop" >
-      <i class="iconfont icon-backtop"></i>
+      <i class="iconfont icon-fanhui"></i>
     </a>
   </transition>
 </template>
@@ -33,8 +33,8 @@
   .mine-backtop {
     overflow: hidden;
     @include flex-center();
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     background-color: rgba(0, 0, 0, 0.6);
     border: none;
     border-radius: 50%;

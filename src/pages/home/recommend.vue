@@ -2,7 +2,7 @@
   <div class="recommend">
     <div class="recommend-center">
       <h3 class="recommend-title">推荐任务</h3>
-      <a href="#">更多任务</a>
+      <a href="#" @click="goMoreTask">更多任务</a>
     </div>
     <div class="loading-container" v-if="!recommends.length">
       <me-loading inline/>
@@ -15,7 +15,7 @@
       >
         <router-link
           class="recommend-link"
-          :to="{name: 'home-product', params: {id: item.baseinfo.itemId}}"
+          :to="{name: 'home-taskDetail', params: {id: item.baseinfo.itemId}}"
         >
           <span class="recommend-pic"><img class="recommend-img" v-lazy="item.baseinfo.picUrlNew"></span>
           <span class="recommend-name">
@@ -23,19 +23,19 @@
               (纯凯挑战)简单几秒钟赚钱
             </p>
             <p class="recommend-second-info">
-              ￥12.00元·120经验
+              ￥12.00元 · 120经验
             </p>
             <p class="recommend-third-info">
-              129人后截止·365天后结束
+              129人后截止 · 365天后结束
             </p>
           </span>
         </router-link>
       </li>
     </ul>
+    <div class="recommend-foot">
+      <span @click="goMoreTask">更多任务</span>
+    </div>
   </div>
-  <!-- <div>
-    HomeRecommend
-  </div> -->
 </template>
 
 <script>
@@ -59,6 +59,9 @@
       this.getRecommend();
     },
     methods: {
+      goMoreTask() {
+        this.$router.push('/moreTask');
+      },
       // API
       update() {
         return this.getRecommend();
@@ -88,6 +91,8 @@
   @import "~assets/scss/mixins";
 
   .recommend {
+    margin-bottom: 8%;
+
     &-center {
       display: flex;
       justify-content: space-between;
@@ -151,5 +156,10 @@
 
   .loading-container {
     padding-top: 100px;
+  }
+  .recommend-foot {
+    margin-top: 20px;
+    margin-bottom: 20%;
+    text-align: center;
   }
 </style>
