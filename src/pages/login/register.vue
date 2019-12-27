@@ -19,7 +19,7 @@
         <li>
           <label class="register-phone">
             <span class="register-title" id="forget-bottom">密码</span>
-            <input type="text" class="register-text" v-model="passwordModel">
+            <input type="password" class="register-text" v-model="passwordModel">
           </label>
           <p class="register-show">{{ pwdErrors.errorText }}</p>
         </li>
@@ -52,10 +52,12 @@
       <div class="register-other">
         <span class="other-title">第三方登录</span>
         <div class="other-content">
-          <i class="iconfont icon-xiaoxi"></i>
-          <i class="iconfont icon-xiaoxi"></i>
-          <i class="iconfont icon-xiaoxi"></i>
-          <i class="iconfont icon-xiaoxi"></i>
+          <a href="http://192.168.0.241/api/oauth/getCode">
+            <i class="iconfont icon-QQ"></i>
+          </a>
+          <i class="iconfont icon-weixin"></i>
+          <i class="iconfont icon-zhifubao"></i>
+          <i class="iconfont icon-weibo"></i>
         </div>
       </div>
     </div>
@@ -64,6 +66,7 @@
 
 <script>
   import MeNavbar from 'base/navbar';
+
   export default {
     name: 'register',
     components: {
@@ -114,12 +117,15 @@
         if (this.passwordModel < 8) {
           status = false;
           errorText = '';
-        } else if (!/^[a-z0-9]+$/g.test(this.passwordModel)) {
+          console.log(1);
+        } else if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/g.test(this.passwordModel)) {
           status = false;
           errorText = '密码由字母和数字组成';
+          console.log(2);
         } else {
           status = true;
           errorText = '';
+          console.log(3);
         }
         return {
           status,
@@ -323,5 +329,9 @@
 
   .other-content {
     margin-top: 30px;
+  }
+
+  .iconfont {
+    font-size: 30px;
   }
 </style>

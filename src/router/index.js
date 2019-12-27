@@ -57,6 +57,36 @@ const routes = [
     component: () => import('pages/moreTask')
   },
   {
+    path: '/moreTask/support/:id',
+    name: 'support',
+    component: () => import('pages/moreTask/support')
+  },
+  {
+    path: '/moreTask/allTask/:id',
+    name: 'allTask',
+    component: () => import('pages/moreTask/allTask')
+  },
+  {
+    path: '/moreTask/play/:id',
+    name: 'play',
+    component: () => import('pages/moreTask/play')
+  },
+  {
+    path: '/moreTask/crowd',
+    name: 'crowd',
+    component: () => import('pages/moreTask/crowd')
+  },
+  {
+    path: '/moreTask/question',
+    name: 'question',
+    component: () => import('pages/moreTask/question')
+  },
+  {
+    path: '/moreTask/alliance',
+    name: 'alliance',
+    component: () => import('pages/moreTask/alliance')
+  },
+  {
     path: '*',
     redirect: '/home'
   }

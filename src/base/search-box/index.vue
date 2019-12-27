@@ -70,7 +70,7 @@
     width: 100%;
     height: $search-box-height;
     padding: 0 7px;
-    background-color: #fff;
+    background-color: #eee;
     border-radius: $search-box-height / 2;
   }
 

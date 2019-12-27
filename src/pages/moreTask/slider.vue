@@ -37,19 +37,19 @@
         <all-task />
       </div>
       <div v-if="index == 2">
-        <all-task />
+        <support />
       </div>
       <div v-if="index == 3">
-        <all-task />
+        <play />
       </div>
       <div v-if="index == 4">
-        <all-task />
+        <crowd />
       </div>
       <div v-if="index == 5">
-        <all-task />
+        <question />
       </div>
       <div v-if="index == 6">
-        <all-task />
+        <alliance />
       </div>
     </div>
   </div>
@@ -58,6 +58,11 @@
 <script>
   import { swiper, swiperSlide } from 'vue-awesome-swiper';
   import AllTask from './allTask';
+  import support from './support';
+  import play from './play';
+  import crowd from './crowd';
+  import question from './question';
+  import alliance from './alliance';
 
   export default {
     name: 'MoreTaskSlider',
@@ -76,7 +81,12 @@
     components: {
       swiper,
       swiperSlide,
-      AllTask
+      AllTask,
+      support,
+      play,
+      crowd,
+      question,
+      alliance
     },
     methods: {
       change(x) {

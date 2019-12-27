@@ -6,7 +6,7 @@ import router from './router';
 import 'vue-awesome/icons';
 import Icon from 'vue-awesome/components/Icon';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
-import  VueTouch from 'vue-touch';
+import VueTouch from 'vue-touch';
 // import fastclick from 'fastclick';
 import VueLazyload from 'vue-lazyload';
 

@@ -11,10 +11,10 @@
         class="nav-item"
         v-for="(item, index) in navs"
         :key="index">
-        <a :href="item.linkUrl" class="nav-link">
+        <router-link :to="{path: '/moreTask'}" class="nav-link">
           <img :src="item.picUrl" class="nav-pic">
           <span>{{item.text}}</span>
-        </a>
+        </router-link>
       </li>
     </ul>
     <div class="nav-title">
