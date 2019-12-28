@@ -43,7 +43,7 @@
     },
     methods: {
       change() {
-        this.$router.push('/login');
+        this.$router.push('/login/login');
       }
     },
     computed: {

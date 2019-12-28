@@ -13,6 +13,7 @@ import VueLazyload from 'vue-lazyload';
 import 'mint-ui/lib/style.css';
 import './assets/scss/index.scss';
 import 'swiper/dist/css/swiper.css';
+import './assets/js/iconfont(1)';
 
 Vue.use(VueTouch, {name: 'v-touch'});
 Vue.use(VueAwesomeSwiper /* { default global options } */);

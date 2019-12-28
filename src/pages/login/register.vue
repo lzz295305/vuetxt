@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <me-navbar class="header" v-show="visible">
-      <i class="iconfont" slot="left"></i>
+      <i class="iconfont icon-fanhui" slot="left" @click="back"></i>
       <span slot="title">注册</span>
     </me-navbar>
     <br>
@@ -46,7 +46,7 @@
         <span @click="change()" class="register-main">完成</span>
       </div>
       <div class="register-deal">
-        <span class="deal-title">登录/注册即表示你同意</span>
+        <span class="deal-title">注册即表示你同意</span>
         <a href="#" class="del-content">《本App服务协议》</a>
       </div>
       <div class="register-other">
@@ -92,6 +92,12 @@
       },
       show1() {
         this.temp = !this.temp;
+      },
+      back() {
+        this.$router.go(-1);
+      },
+      change() {
+        this.$router.push('/login/login');
       }
     },
     computed: {

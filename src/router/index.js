@@ -7,7 +7,34 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('pages/login')
+    component: () => import('pages/login'),
+    children: [
+      {
+        path: '/passwordlogin',
+        name: 'passwordlogin',
+        component: () => import('pages/login/passwordlogin')
+      },
+      {
+        path: '/verificationlogin',
+        name: 'verificationlogin',
+        component: () => import('pages/login/verificationlogin')
+      }
+    ]
+  },
+  {
+    path: '/login/login',
+    name: 'login/login',
+    component: () => import('pages/login/login')
+  },
+  {
+    path: '/login/register',
+    name: 'login/register',
+    component: () => import('pages/login/register')
+  },
+  {
+    path: '/login/forget',
+    name: 'login/forget',
+    component: () => import('pages/login/forget')
   },
   {
     path: '/login/rest',
@@ -87,8 +114,67 @@ const routes = [
     component: () => import('pages/moreTask/alliance')
   },
   {
+    path: '/issueskill',
+    name: 'issueskill',
+    component: () => import('pages/personal/issueskill'),
+    children: [
+      {
+        path: 'ordermanagment',
+        name: 'ordermanagment',
+        component: () => import('pages/personal/ordermanagment')
+      },
+      {
+        path: 'myskill',
+        name: 'myskill',
+        component: () => import('pages/personal/myskill')
+      }
+    ]
+  },
+  {
+    path: '/personaldata',
+    name: 'personaldata',
+    component: () => import('pages/personal/personaldata')
+  },
+  {
+    path: '/task',
+    name: 'task',
+    component: () => import('pages/personal/task')
+  },
+  {
+    path: '/personaldata',
+    name: 'personaldata',
+    component: () => import('pages/personal/personaldata'),
+    children: [
+      {
+        path: 'task',
+        name: 'task',
+        component: () => import('pages/personal/task')
+      },
+      {
+        path: 'invitation',
+        name: 'invitation',
+        component: () => import('pages/personal/invitation')
+      },
+      {
+        path: 'skill',
+        name: 'skill',
+        component: () => import('pages/personal/skill')
+      },
+      {
+        path: 'dynamic',
+        name: 'dynamic',
+        component: () => import('pages/personal/dynamic')
+      }
+    ]
+  },
+  {
+    path: '/editdata',
+    name: 'editdata',
+    component: () => import('pages/personal/editdata')
+  },
+  {
     path: '*',
-    redirect: '/home'
+    redirect: '/login'
   }
 ];
 
