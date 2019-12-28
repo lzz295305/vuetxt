@@ -88,19 +88,19 @@
   import invitation from './invitation';
   import dynamic from './dynamic';
   export default {
-      name: 'personaldata',
-      components: {
-        task,
-        skill,
-        invitation,
-        dynamic
-      },
-      data() {
-          return {
-              index: 2
-          };
-      },
-      methods: {
+    name: 'personaldata',
+    components: {
+      task,
+      skill,
+      invitation,
+      dynamic
+    },
+    data() {
+      return {
+        index: 2
+      };
+    },
+    methods: {
       back() {
         this.$router.go(-1);
       },
@@ -109,33 +109,7 @@
       },
       change(index) {
         this.index = index;
-      },
-
-      // mounted() {
-      //   let pageInfo = DBUtil.getSessionStorage("worryPageInfo",true);
-      //   if (Utils.isNotEmpty(pageInfo)){
-      //     this.worryPageInfo = pageInfo;
-      //   }
-      //   this.show(this.worryPageInfo.guanzhu);
-      //   this.change(this.worryPageInfo.currentIndex);
-      //
-      // },
-      // beforeRouteLeave(to, from, next) {
-      //   DBUtil.setSessionStorage("worryPageInfo",this.worryPageInfo);
-      //   next();
-      // },
-      // data() {
-      //   return {
-      //     toggleActive: true
-      //   };
-      // },
-      // methods: {
-      //   show(t) {
-      //     this.toggleActive = t;
-      //   },
-      //   handleInput() {
-      //   }
-      // }
+      }
     }
   };
 </script>
@@ -148,9 +122,6 @@
     transform: scale(1.2);
     opacity: 0.8;
     transition: all 0.5s ease-in-out;
-    /*opacity: 0;*/
-    /*-webkit-transform: translate(-100%,0);*/
-    /*transform: translate(-100%,0);*/
   }
 
   .fade-enter-active,.fade-leave-avtive {

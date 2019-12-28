@@ -54,6 +54,11 @@ const routes = [
     ]
   },
   {
+    path: '/home/topSpeed',
+    name: 'home-topSpeed',
+    component: () => import('pages/home/topSpeed')
+  },
+  {
     path: '/skill',
     name: 'skill',
     component: () => import('pages/skill')
@@ -79,7 +84,7 @@ const routes = [
     component: () => import('pages/skillDetail')
   },
   {
-    path: '/moreTask',
+    path: '/moreTask/:id',
     name: 'home-moreTask',
     component: () => import('pages/moreTask')
   },
@@ -174,7 +179,7 @@ const routes = [
   },
   {
     path: '*',
-    redirect: '/login'
+    redirect: '/home'
   }
 ];
 

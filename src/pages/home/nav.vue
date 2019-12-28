@@ -10,11 +10,13 @@
       <li
         class="nav-item"
         v-for="(item, index) in navs"
-        :key="index">
-        <router-link :to="{path: '/moreTask'}" class="nav-link">
+        :key="index"
+        @click="ToTask1(index)"
+      >
+        <div class="nav-link">
           <img :src="item.picUrl" class="nav-pic">
           <span>{{item.text}}</span>
-        </router-link>
+        </div>
       </li>
     </ul>
     <div class="nav-title">
@@ -24,7 +26,9 @@
       <li
         class="nav-item"
         v-for="(item, index) in navs1"
-        :key="index">
+        :key="index"
+        @click="ToTask(index)"
+      >
         <a :href="item.linkUrl" class="nav-link">
           <img :src="item.picUrl" class="nav-pic">
           <span>{{item.text}}</span>
@@ -70,6 +74,17 @@
     created() {
       this.navs = navItems;
       this.navs1 = navItems1;
+    },
+    methods: {
+      ToTask(index) {
+        if (index === 0) {
+          this.$router.push('/home/topSpeed');
+        }
+      },
+      ToTask1(index) {
+        let id = index + 1;
+        this.$router.push({path: '/moreTask/' + id});
+      }
     }
   };
 </script>

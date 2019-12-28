@@ -2,9 +2,9 @@
   <div class="allTask">
     <more-task-nav />
     <div class="recommend">
-    <div class="loading-container" v-if="!recommends.length">
-      <me-loading inline/>
-    </div>
+      <div class="loading-container" v-if="!recommends.length">
+        <me-loading inline/>
+      </div>
       <ul class="recommend-list" v-else>
         <li
           class="recommend-item"

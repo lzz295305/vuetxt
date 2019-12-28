@@ -43,7 +43,6 @@ export const navItems = [
 export const navItems1 = [
   // 原nav.uve的数据
   {
-    linkUrl: 'https://www.imooc.com',
     picUrl: require('./img/nav-item-1.png'),
     text: '极速赚'
   },

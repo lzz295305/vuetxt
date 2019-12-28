@@ -60,7 +60,7 @@
     },
     methods: {
       goMoreTask() {
-        this.$router.push('/moreTask');
+        this.$router.push({name: 'home-moreTask'});
       },
       // API
       update() {
@@ -91,7 +91,7 @@
   @import "~assets/scss/mixins";
 
   .recommend {
-    margin-bottom: 8%;
+    margin-bottom: 18%;
 
     &-center {
       display: flex;
@@ -158,8 +158,11 @@
     padding-top: 100px;
   }
   .recommend-foot {
+    height: 100px;
     margin-top: 20px;
-    margin-bottom: 20%;
     text-align: center;
+  }
+  .recommend-foot>span {
+    margin-bottom: 15%;
   }
 </style>
