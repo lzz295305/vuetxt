@@ -10,37 +10,17 @@
     </ul>
     <div v-if="temp" class="content">
       <ul class="tab-data">
-        <li @click="goSkillDetail">
+        <li @click="goSkillDetail(item.siSerialnumber)" v-for="(item, index) in skillList" :key="index">
           <div class="content-title">
             <img src="./img/nav-item-1.png" alt="" class="title-img">
-            <span>奈黑酱</span>
+            <span>{{item.siTitle}}</span>
           </div>
           <div class="content-matter">
             <img src="./img/nav-item-1.png" alt="" class="content-img">
             <div class="content-txt">
-              <span>陪聊（可盐可甜）</span>
+              <span>{{item.siTitle}}</span>
               <p class="content-info">
-                <span>8.80元</span>
-                <span>
-              <i class="iconfont icon-xiaoxi">5.0</i>
-              <i class="iconfont icon-xiaoxi"></i>
-            </span>
-              </p>
-              <span>官方认证</span>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="content-title">
-            <img src="./img/nav-item-1.png" alt="" class="title-img">
-            <span>奈黑酱</span>
-          </div>
-          <div class="content-matter">
-            <img src="./img/nav-item-1.png" alt="" class="content-img">
-            <div class="content-txt">
-              <span>陪聊（可盐可甜）</span>
-              <p class="content-info">
-                <span>8.80元</span>
+                <span>{{item.siMoney}}元</span>
                 <span>
               <i class="iconfont icon-xiaoxi">5.0</i>
               <i class="iconfont icon-xiaoxi"></i>
@@ -60,6 +40,7 @@
 
 <script>
   import SkillState from './state';
+  import axios from 'axios';
 
   export default {
     name: 'SkillTab',
@@ -67,11 +48,15 @@
       return {
         temp: true,
         leftIsActive: true,
-        rightIsActive: false
+        rightIsActive: false,
+        skillList: []
       };
     },
     components: {
       SkillState
+    },
+    created() {
+      this.init();
     },
     methods: {
       show(t) {
@@ -79,8 +64,19 @@
         this.rightIsActive = !t;
         this.temp = t;
       },
-      goSkillDetail() {
-        this.$router.push('/skillDetail');
+      goSkillDetail(siSerialnumber) {
+        this.$router.push({
+          path: '/skillDetail',
+          query: {
+            id: siSerialnumber
+          }
+        });
+      },
+      init() {
+        axios.get('http://192.168.0.242:8080/skillspage/showskill').then(result => {
+          let goodsData = result.data;
+          this.skillList = goodsData;
+        });
       }
     }
   };

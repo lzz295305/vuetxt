@@ -3,17 +3,19 @@
     <header class="g-header-container">
       <skill-header/>
     </header>
-    <div class="g-content-container">
-      <div class="slider">
-        <skill-slider/>
+    <me-scroll>
+      <div class="g-content-container">
+        <div class="slider">
+          <skill-slider/>
+        </div>
+        <div class="main">
+          <skill-nav/>
+        </div>
+        <div class="tab">
+          <skill-tab/>
+        </div>
       </div>
-      <div class="main">
-        <skill-nav/>
-      </div>
-      <div class="tab">
-        <skill-tab/>
-      </div>
-    </div>
+    </me-scroll>
   </div>
 </template>
 
@@ -22,6 +24,7 @@
   import SkillSlider from './slider';
   import SkillNav from './nav';
   import SkillTab from './tab';
+  import MeScroll from 'base/scroll';
 
   export default {
     name: 'skill',
@@ -29,7 +32,8 @@
       SkillHeader,
       SkillSlider,
       SkillNav,
-      SkillTab
+      SkillTab,
+      MeScroll
     }
   };
 </script>

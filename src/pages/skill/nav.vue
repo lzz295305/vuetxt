@@ -4,22 +4,23 @@
         <li
           class="nav-item"
           v-for="(item, index) in navs"
-          :key="index">
-          <a :href="item.linkUrl" class="nav-link">
+          :key="index"
+        >
+          <router-link :to="{path: '/skillBranch'}" class="nav-link">
             <img :src="item.picUrl" class="nav-pic">
             <span>{{item.text}}</span>
-          </a>
+          </router-link>
         </li>
       </ul>
       <ul class="nav-box">
-        <li class="nav-context">
+        <li class="nav-context" @click="ToDivision">
           <div class="nav-context1">
             <h3>优质技能专区</h3>
             <span>excellent skills</span>
           </div>
           <i class="iconfont icon-faburenwu"></i>
         </li>
-        <li class="nav-context">
+        <li class="nav-context" @click="ToDivision">
           <div class="nav-context1">
             <h3>游戏大神专区</h3>
             <span>让游戏变得更容易</span>
@@ -36,6 +37,11 @@
     name: 'SkillNav',
     created() {
       this.navs = navItems2;
+    },
+    methods: {
+      ToDivision() {
+        this.$router.push('/skillDivision');
+      }
     }
   };
 </script>

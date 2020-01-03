@@ -8,20 +8,19 @@
         </div>
         <div class="g-main-container">
           <div style="overflow-y: scroll">
-          <skill-detail-main/>
-          <main-info/>
-          <main-evaluate class="main-evaluate"/>
+            <skill-detail-main/>
+            <main-evaluate class="main-evaluate"/>
+          </div>
         </div>
-      </div>
 
       <router-view></router-view>
       <div class="task-footer">
-        <router-link class="footer-left" to="/home">
+        <router-link class="footer-left" :to="{path: '/skillContact'}">
           <span>
             <i class="iconfont icon-xiaoxi">联系猎人</i>
           </span>
         </router-link>
-        <router-link class="footer-right" to="/home">
+        <router-link class="footer-right" :to="{path: '/buySkill'}">
           <span>
             <i class="iconfont icon-chaye">购买技能</i>
           </span>
@@ -35,17 +34,19 @@
   import SkillDetailSlider from './slider';
   import SkillDetailMain from './main';
   import MeScroll from 'base/scroll';
-  import MainInfo from './info';
   import MainEvaluate from './evaluate';
 
   export default {
     name: 'SkillDetail',
+    data() {
+      return {
+      };
+    },
     components: {
       SkillDetailHeader,
       SkillDetailSlider,
       SkillDetailMain,
       MeScroll,
-      MainInfo,
       MainEvaluate
     },
     methods: {

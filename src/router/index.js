@@ -178,6 +178,31 @@ const routes = [
     component: () => import('pages/personal/editdata')
   },
   {
+    path: '/skillBranch',
+    name: 'skillBranch',
+    component: () => import('pages/skillBranch')
+  },
+  {
+    path: '/skillDivision',
+    name: 'skillDivision',
+    component: () => import('pages/skillDivision')
+  },
+  {
+    path: '/skillContact',
+    name: 'skillContact',
+    component: () => import('pages/skillContact')
+  },
+  {
+    path: '/buySkill',
+    name: 'buySkill',
+    component: () => import('pages/buySkill')
+  },
+  {
+    path: '/comment',
+    name: 'comment',
+    component: () => import('pages/skillDetail/comment')
+  },
+  {
     path: '*',
     redirect: '/home'
   }

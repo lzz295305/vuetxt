@@ -4,27 +4,27 @@
       <div class="slider">
         <swiper :options="swiperOption" v-model="index">
           <swiper-slide>
-            <div id="1" @click="change(1)" :class="{'active': index === 1}">
+            <div id="1" @click="change(1)" :class="{'active': index == 1}">
               官方任务
             </div>
           </swiper-slide>
           <swiper-slide>
-            <div id="2" @click="change(2)" :class="{'active': index === 2}">
+            <div id="2" @click="change(2)" :class="{'active': index == 2}">
               社区互助
             </div>
           </swiper-slide>
           <swiper-slide>
-            <div id="3" @click="change(3)" :class="{'active': index === 3}">
+            <div id="3" @click="change(3)" :class="{'active': index == 3}">
               App试玩
             </div>
           </swiper-slide>
           <swiper-slide>
-            <div id="4" @click="change(4)" :class="{'active': index === 4}">
+            <div id="4" @click="change(4)" :class="{'active': index == 4}">
               众包任务
             </div>
           </swiper-slide>
           <swiper-slide>
-            <div id="5" @click="change(5)" :class="{'active': index === 5}">
+            <div id="5" @click="change(5)" :class="{'active': index == 5}">
               个人问卷
             </div>
           </swiper-slide>
@@ -98,7 +98,7 @@
     },
     methods: {
       getId() {
-        if (this.$route.params.id !== '') {
+        if (this.$route.params.id) {
           this.index = this.$route.params.id;
         } else {
           this.index = 1;

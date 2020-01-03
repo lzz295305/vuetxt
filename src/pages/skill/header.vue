@@ -52,13 +52,7 @@
 
   .header {
     &.mine-navbar {
-      /*background-color: $header-bgc-translucent; */
-      background-color: transparent;
-      transition: background-color 0.5s;
-    }
-
-    &.header-transition {
-      background-color: $header-bgc-translucent;
+      background-color: #F5F5F5;
     }
 
     .iconfont {

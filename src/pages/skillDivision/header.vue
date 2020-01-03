@@ -1,16 +1,13 @@
 <template>
   <me-navbar class="header" v-show="visible">
-    <i class="iconfont" slot="left"></i>
-    <span slot="title">猎人讨论区</span>
-    <i class="iconfont icon-xiaoxi" slot="right"></i>
+    <i class="iconfont icon-fanhui" slot="left" @click="back"></i>
   </me-navbar>
 </template>
 
 <script>
   import MeNavbar from 'base/navbar';
-
   export default {
-    name: 'HomeHeader',
+    name: 'DivisionHeader',
     components: {
       MeNavbar
     },
@@ -26,6 +23,9 @@
       },
       hide() {
         this.visible = false;
+      },
+      back() {
+        this.$router.go(-1);
       }
     }
   };
@@ -36,16 +36,11 @@
 
   .header {
     &.mine-navbar {
-      background-color: #F5F5F5;
+      background-color: rgba(0, 0, 0, 0);
     }
 
     .iconfont {
-      color:$icon-color-default;
-      font-size: $icon-font-size;
-    }
-
-    .icon-xiaoxi{
-      color: #080808;
+      color: white;
     }
   }
 </style>

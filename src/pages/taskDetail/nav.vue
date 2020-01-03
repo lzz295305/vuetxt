@@ -2,9 +2,9 @@
     <div class="nav">
       <ul>
         <li class="nav-detail">
-          <div class="task-info">
-            <p class="info-first">(快手极速版) 秒赚4元</p>
-            <p class="info-second">3.00</p>
+          <div class="task-info"  v-for="(item, index) in goodsList" :key="index">
+            <p class="info-first">{{item.tiTitle}}</p>
+            <p class="info-second">{{item.tiMoney}}</p>
             <p class="info-third">30经验 · 663人截止 · 30天后结束</p>
           </div>
         </li>
@@ -13,8 +13,34 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    name: 'taskNav'
+    name: 'taskNav',
+    data() {
+      return {
+        goodsList: []
+      };
+    },
+    mounted() {
+      this.init();
+    },
+    methods: {
+      init() {
+        axios.get('http://192.168.0.46:8080/task/getTask/1').then(result => {
+          if (result.data !== null) {
+            const goodsData = result.data;
+            this.goodsList.push(goodsData);
+          } else {
+            console.log(1);
+          }
+        }).catch(err => {
+          if (err) {
+            console.log(err);
+          }
+        });
+      }
+    }
   };
 </script>
 

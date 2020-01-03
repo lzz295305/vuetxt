@@ -1,8 +1,10 @@
 <template>
   <div class="community">
     <com-header/>
-    <com-nav/>
-    <com-tab/>
+    <me-scroll>
+      <com-nav/>
+      <com-tab/>
+    </me-scroll>
   </div>
 </template>
 
@@ -10,13 +12,15 @@
   import ComHeader from './header';
   import ComNav from './nav';
   import ComTab from './tab';
+  import MeScroll from 'base/scroll';
 
   export default {
     name: 'Community',
     components: {
       ComHeader,
       ComNav,
-      ComTab
+      ComTab,
+      MeScroll
     }
   };
 </script>

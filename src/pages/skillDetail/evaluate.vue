@@ -2,7 +2,7 @@
     <div class="evaluate">
       <div class="evaluate-title">
         <span class="title-left">评价</span>
-        <a class="title-right">
+        <a class="title-right" @click="toComment">
           全部
           <i class="iconfont icon-chaye"></i>
         </a>
@@ -36,7 +36,12 @@
 
 <script>
   export default {
-    name: 'evaluate'
+    name: 'evaluate',
+    methods: {
+      toComment() {
+        this.$router.push('/comment');
+      }
+    }
   };
 </script>
 
