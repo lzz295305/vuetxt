@@ -15,10 +15,9 @@
         >
           <p class="recommend-pic"><img class="recommend-img" v-lazy="item.baseinfo.picUrlNew"></p>
           <p class="recommend-name">{{item.name.shortName}}</p>
-          <p class="recommend-origPrice"><del>¥{{item.price.origPrice}}</del></p>
           <p class="recommend-info">
             <span class="recommend-price">¥<strong class="recommend-price-num">{{item.price.actPrice}}</strong></span>
-            <span class="recommend-count">{{item.remind.soldCount}}件已售</span>
+            <span class="recommend-count icon-icon-test">2</span>
           </p>
         </router-link>
       </li>

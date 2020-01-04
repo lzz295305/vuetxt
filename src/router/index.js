@@ -203,6 +203,11 @@ const routes = [
     component: () => import('pages/skillDetail/comment')
   },
   {
+    path: '/discussion',
+    name: 'discussion',
+    component: () => import('pages/discussion')
+  },
+  {
     path: '*',
     redirect: '/home'
   }

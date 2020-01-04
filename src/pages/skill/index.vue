@@ -3,7 +3,13 @@
     <header class="g-header-container">
       <skill-header/>
     </header>
-    <me-scroll>
+    <me-scroll
+      :data="recommends"
+      pullDown
+      @pull-down="pullToRefresh"
+      @scroll-end="scrollEnd"
+      @scroll="scroll"
+      ref="scroll">
       <div class="g-content-container">
         <div class="slider">
           <skill-slider/>
@@ -34,6 +40,19 @@
       SkillNav,
       SkillTab,
       MeScroll
+    },
+    methods: {
+      updateScroll() {
+      },
+      getRecommends(recommends) {
+        this.recommends = recommends;
+      },
+      pullToRefresh(end) {
+        this.$refs.slider.update().then(end);
+      },
+      scrollEnd(translate, scroll) {
+        this.isBacktopVisible = translate < 0 && -translate > scroll.height();
+      }
     }
   };
 </script>

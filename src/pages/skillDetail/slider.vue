@@ -6,13 +6,13 @@
       :loop="loop"
       :interval="interval"
       :pagination="pagination"
-      >
+    >
       <swiper-slide
-          v-for="(item, index) in sliders"
-          :key="index"
-        >
+        v-for="(item, index) in skillImg"
+        :key="index"
+      >
         <a :href="item.linkUrl" alt="" class='slider-link'>
-          <img :src="item.picUrl" alt="" class='slider-img'>
+          <img :src="item" alt="" class='slider-img'>
         </a>
       </swiper-slide>
     </me-slider>
@@ -27,12 +27,12 @@
   import MeLoading from 'base/loading';
 
   export default {
-
     name: 'SkillDetailSlider',
     components: {
       MeSlider,
       MeLoading,
-      swiperSlide
+      swiperSlide,
+      skillImg: []
     },
     data() {
       return {
@@ -54,6 +54,7 @@
     },
     created() {
       this.getSliders();
+      this.init();
     },
     methods: {
       update() {
@@ -63,9 +64,14 @@
         return getHomeSlider().then(data => {
           this.sliders = data;
         });
+      },
+      init() {
+        let skillId = this.$route.query.id;
+        this.$http.get('/skills/sel/' + skillId, result => {
+          this.skillImg = result.siImgages;
+        }, err => { console.log(err); });
       }
     }
-
   };
 </script>
 

@@ -10,6 +10,7 @@ import VueTouch from 'vue-touch';
 import Vant from 'vant';
 // import fastclick from 'fastclick';
 import VueLazyload from 'vue-lazyload';
+import HttpUtil from './utils/http';
 
 import 'mint-ui/lib/style.css';
 import './assets/scss/index.scss';
@@ -22,6 +23,7 @@ Vue.use(VueAwesomeSwiper /* { default global options } */);
 Vue.use(MintUI);
 Vue.component('icon', Icon);
 Vue.use(Vant);
+Vue.prototype.$http = HttpUtil;
 
 VueTouch.config.swipe = {
   threshold: 100

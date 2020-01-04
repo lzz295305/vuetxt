@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <ul class="nav-max">
-      <li class="nav-min">
+      <li class="nav-min" @click="toDiscussion">
         <span class="min-title">技能讨论</span>
         <img class="min-img" src="./img/nav-item-3.png" alt="">
       </li>
@@ -39,7 +39,12 @@
 
 <script>
   export default {
-    name: 'ComNav'
+    name: 'ComNav',
+    methods: {
+      toDiscussion() {
+        this.$router.push('/discussion');
+      }
+    }
   };
 </script>
 

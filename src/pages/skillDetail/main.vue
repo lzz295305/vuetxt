@@ -1,10 +1,10 @@
 <template>
     <div class="main-container">
       <ul>
-        <li>
+        <li v-for="(item, index) in skillList" :key="index">
           <div class="main-top">
             <div class="left-price">
-              <span class="price">￥{{skillMoney}}</span>
+              <span class="price">￥{{item.siMoney}}</span>
               <span class="time">/半小时</span>
             </div>
             <div class="right-evaluate">
@@ -15,7 +15,7 @@
             <i class="iconfont icon-chaye">英勇黄金</i>
           </div>
           <div class="introduce">
-            <span>{{skillTitle}}</span>
+            <span>{{item.siTitle}}</span>
           </div>
           <div class="main-bottom">
             <div class="left">
@@ -83,14 +83,11 @@
 </template>
 
 <script>
-  import axios from 'axios';
   export default {
     name: 'SkillDetailMain',
     data() {
       return {
-        skillList: [],
-        skillMoney: '',
-        skillTitle: ''
+        skillList: []
       };
     },
     components: {
@@ -101,16 +98,9 @@
     methods: {
       init() {
         let skillId = this.$route.query.id;
-        axios.get('http://192.168.0.242:8080/skillspage/showdetails').then(result => {
-          this.skillList.push(result.data.skillsinfo);
-          this.skillList.forEach(item => {
-            if (item.siSerialnumber === skillId) {
-              console.log(1);
-              this.skillMoney = item.siMoney;
-              this.skillTitle = item.siTitle;
-            }
-          });
-        });
+        this.$http.get('/skills/sel/' + skillId, result => {
+          this.skillList.push(result);
+        }, err => { console.log(err); });
       }
     }
   };

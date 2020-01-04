@@ -12,11 +12,11 @@
       <ul class="tab-data">
         <li @click="goSkillDetail(item.siSerialnumber)" v-for="(item, index) in skillList" :key="index">
           <div class="content-title">
-            <img src="./img/nav-item-1.png" alt="" class="title-img">
+            <img :src="item.siImg" alt="" class="title-img">
             <span>{{item.siTitle}}</span>
           </div>
           <div class="content-matter">
-            <img src="./img/nav-item-1.png" alt="" class="content-img">
+            <img :src="item.siImg" alt="" class="content-img">
             <div class="content-txt">
               <span>{{item.siTitle}}</span>
               <p class="content-info">
@@ -73,7 +73,7 @@
         });
       },
       init() {
-        axios.get('http://192.168.0.242:8080/skillspage/showskill').then(result => {
+        axios.get('http://192.168.0.253:8080/skills/selAll').then(result => {
           let goodsData = result.data;
           this.skillList = goodsData;
         });
