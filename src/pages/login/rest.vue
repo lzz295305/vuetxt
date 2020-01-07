@@ -43,6 +43,17 @@
     },
     methods: {
       change() {
+        let phone = this.$route.query.id;
+        let pwd = this.newModel;
+        this.$http.get('/login/cp/' + phone + '/' + pwd, result => {
+          console.log(result);
+          alert(result);
+          if (result === '重置密码成功') {
+            this.$router.push('/login/login');
+          } else {
+            alert('重置失败');
+          }
+        }, err => { console.log(err); });
         this.$router.push('/login/login');
       }
     },

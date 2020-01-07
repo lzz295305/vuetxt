@@ -208,6 +208,31 @@ const routes = [
     component: () => import('pages/discussion')
   },
   {
+    path: '/news',
+    name: 'news',
+    component: () => import('pages/news')
+  },
+  {
+    path: '/releaseTask',
+    name: 'releaseTask',
+    component: () => import('pages/home/releaseTask')
+  },
+  {
+    path: '/releaseSkill',
+    name: 'releaseSkill',
+    component: () => import('pages/home/releaseSkill')
+  },
+  {
+    path: '/releasePost',
+    name: 'releasePost',
+    component: () => import('pages/home/releasePost')
+  },
+  {
+    path: '/releaseDynamic',
+    name: 'releaseDynamic',
+    component: () => import('pages/home/releaseDynamic')
+  },
+  {
     path: '*',
     redirect: '/home'
   }

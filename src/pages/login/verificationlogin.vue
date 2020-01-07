@@ -6,15 +6,14 @@
            style="color:black; font-size: 17px;background-color: transparent;"
            placeholder="输入手机号" maxlength="11" v-model="usernameModel">
     <p class="register-show">{{ userErrors.errorText }}</p>
-    <br><span style="font-size: 18px;margin-right: 3px;color: black">验证码</span>
-
+    <br>
+    <span style="font-size: 18px;margin-right: 3px;color: black">验证码</span>
     <input type="text" class="input2"
            style="color:black;font-size: 18px;background-color: transparent;"
-           placeholder="输入验证码">
+           placeholder="输入验证码" v-model="newModel">
+    <span class="forward" @click="send">发送验证码</span>
     <div class="button">
-      <router-link to="/loginhome">
-        <a style="color: black;">登录</a>
-      </router-link>
+      <span style="color: black;" @click="toHome">登录</span>
     </div>
   </div>
 </div>
@@ -42,6 +41,22 @@
       },
       show1() {
         this.temp = !this.temp;
+      },
+      send() {
+        let phone = this.usernameModel;
+        let number = 1;
+        this.$http.get('/login/gc/' + phone + '/' + number, result => {
+          console.log(1);
+        }, err => { console.log(err); });
+      },
+      toHome() {
+        let phone = this.usernameModel;
+        let vc = this.newModel;
+        this.$http.get('/login/vcl/' + phone + '/' + vc, result => {
+          console.log(result);
+        }, err => {
+          console.log(err);
+        });
       }
     },
     computed: {
@@ -121,5 +136,10 @@
     font-size: 15px;
     height: 20px;
     color: red;
+  }
+  .forward {
+    margin: 0 0 0 -63px;
+    background-color: transparent;
+    color: black;
   }
 </style>

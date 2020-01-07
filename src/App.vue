@@ -15,7 +15,7 @@
     name: 'App',
     data() {
       return {
-        footNavs: ['/home', '/skill', '/community', '/personal'],
+        footNavs: ['/home', '/skill', '/news', '/personal'],
         navShow: true
       };
     },

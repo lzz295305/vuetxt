@@ -9,12 +9,10 @@
     <br><span style="color:#000; font-size: 18px;">密&nbsp;&nbsp;&nbsp;码</span>
     <input type="password" class="input2"
            style="color:black;font-size: 18px;background-color: transparent;"
-           placeholder="输入密码">
+           placeholder="输入密码" v-model="passwordModel">
   </div>
   <div class="button">
-    <router-link to="/home">
-    <a href="#" style="font-size: 17px;">登录</a>
-    </router-link>
+     <spqn style="font-size: 17px;" @click="toHome">登录</spqn>
   </div>
 </div>
 </template>
@@ -41,6 +39,20 @@
       },
       show1() {
         this.temp = !this.temp;
+      },
+      toHome() {
+        let name = this.usernameModel;
+        let pwd = this.passwordModel;
+        this.$http.get('/login/ptl/' + name + '/' + pwd, result => {
+          console.log(result.number);
+          if (result.number) {
+            this.$router.push('/home');
+          } else {
+            alert('没有此用户,请先去注册账户');
+          }
+        }, err => {
+          console.log(err);
+        });
       }
     },
     computed: {

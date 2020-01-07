@@ -6,7 +6,7 @@
       </me-navbar>
       <div class="discussion-nav">
         <div class="nav-img">
-          <img src="./1.jpg" alt="">
+          <img src="./1.jpg" alt="图片消失">
           <div class="nav-show">
             <div class="show-content">
               技能讨论

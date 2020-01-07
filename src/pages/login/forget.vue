@@ -13,8 +13,8 @@
         <li>
           <label class="forget-phone">
             <span class="forget-title">验证码</span>
-            <input type="text" class="forget-text" placeholder="请输入验证码">
-            <span class="btn_send_code">发送验证码</span>
+            <input type="text" class="forget-text" placeholder="请输入验证码" v-model="verify">
+            <span class="btn_send_code" @click="send">发送验证码</span>
           </label>
         </li>
       </ul>
@@ -35,15 +35,38 @@
     data() {
       return {
         usernameModel: '',
-        errorText: ''
+        errorText: '',
+        verify: ''
       };
     },
     components: {
       ForgetHeader
     },
     methods: {
+      send() {
+        let phone = this.usernameModel;
+        let number = 3;
+        this.$http.get('/login/gc/' + phone + '/' + number, result => {
+          console.log(3);
+        }, err => { console.log(err); });
+      },
       change() {
-        this.$router.push('/login/rest');
+        let phone = this.usernameModel;
+        let vc = this.verify;
+        this.$http.get('/login/ftpvc/' + phone + '/' + vc, result => {
+          console.log(result);
+          alert(result);
+          if (result === '修改密码') {
+            this.$router.push({
+              path: '/login/rest',
+              query: {
+                id: phone
+              }
+            });
+          } else {
+            alert('不能修改');
+          }
+        }, err => { console.log(err); });
       }
     },
     computed: {

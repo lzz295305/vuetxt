@@ -22,9 +22,9 @@
               <p class="content-info">
                 <span>{{item.siMoney}}元</span>
                 <span>
-              <i class="iconfont icon-xiaoxi">5.0</i>
-              <i class="iconfont icon-xiaoxi"></i>
-            </span>
+                  <i class="iconfont icon-xiaoxi">5.0</i>
+                  <i class="iconfont icon-xiaoxi"></i>
+                </span>
               </p>
               <span>官方认证</span>
             </div>

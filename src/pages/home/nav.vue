@@ -41,14 +41,14 @@
     <div class="nav-card">
       <ul>
         <li class="nav-content1">
-          <a href="#" class="nav-link">
+          <a href="http://mobile.noxhunter.com/mobile/recommendFriends/inviteFriends?uid=03c770b8440f4ce9290b11a4a5d1a30f" class="nav-link">
             <span class="nav-link-title">邀请好友</span>
             <span class="nav-link-center">坐享额外收入</span>
             <i class="iconfont icon-faburenwu"></i>
           </a>
         </li>
         <li class="nav-content2">
-          <a href="#" class="nav-link">
+          <a href="http://mobile.noxhunter.com/mobile/noviceTask?uid=03c770b8440f4ce9290b11a4a5d1a30f" class="nav-link">
             <span class="nav-link-title">新手任务</span>
             <span class="nav-link-center">快速成为猎人</span>
             <i class="iconfont icon-faburenwu"></i>

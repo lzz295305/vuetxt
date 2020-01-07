@@ -26,8 +26,8 @@
         <li>
           <label class="register-phone">
             <span class="register-title">验证码</span>
-            <input type="text" class="register-text" placeholder="请输入验证码">
-            <span class="btn_send_code">发送验证码</span>
+            <input type="text" class="register-text" placeholder="请输入验证码" v-model="verify">
+            <span class="btn_send_code" @click="ToSend">发送验证码</span>
           </label>
         </li>
       </ul>
@@ -36,7 +36,7 @@
         <div v-if="temp" class="register-invite">
           <label class="register-none">
             <span class="hidden-title">邀请码</span>
-            <input type="text" class="hidden-text">
+            <input type="text" class="hidden-text" v-model="invite">
           </label>
         </div>
       </div>
@@ -78,27 +78,11 @@
         passwordModel: '',
         newModel: '',
         usernameModel: '',
+        verify: '',
         errorText: '',
-        temp: ''
+        temp: '',
+        invite: ''
       };
-    },
-    methods: {
-      // API
-      show() {
-        this.visible = true;
-      },
-      hide() {
-        this.visible = false;
-      },
-      show1() {
-        this.temp = !this.temp;
-      },
-      back() {
-        this.$router.go(-1);
-      },
-      change() {
-        this.$router.push('/login/login');
-      }
     },
     computed: {
       userErrors() {
@@ -123,7 +107,6 @@
         if (this.passwordModel < 8) {
           status = false;
           errorText = '';
-          console.log(1);
         } else if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/g.test(this.passwordModel)) {
           status = false;
           errorText = '密码由字母和数字组成';
@@ -131,12 +114,46 @@
         } else {
           status = true;
           errorText = '';
-          console.log(3);
         }
         return {
           status,
           errorText
         };
+      }
+    },
+    methods: {
+      // API
+      show() {
+        this.visible = true;
+      },
+      hide() {
+        this.visible = false;
+      },
+      show1() {
+        this.temp = !this.temp;
+      },
+      back() {
+        this.$router.go(-1);
+      },
+      change() {
+        let phone = this.usernameModel;
+        let vc = this.verify;
+        let pwd = this.passwordModel;
+        let icode = this.invite;
+        this.$http.get('/login/vcr/' + phone + '/' + vc + '/' + pwd + '/' + icode, result => {
+          if (result === '注册成功') {
+            this.$router.push('/login/login');
+          } else {
+            alert('注册失败');
+          }
+        }, err => { console.log(err); });
+      },
+      ToSend() {
+        let phone = this.usernameModel;
+        let number = 2;
+        this.$http.get('/login/gc/' + phone + '/' + number, result => {
+          console.log(2);
+        }, err => { console.log(err); });
       }
     }
   };
