@@ -1,38 +1,60 @@
 <template>
     <div class="main">
-      <div class="main-top">
-        <i class="iconfont icon-chaye"></i>
-        <span>雇主资金已托管，猎人赚钱有保障</span>
-      </div>
-      <ul class="main-center">
-        <li>
-          <p>奖励24小时内审核</p>
-        </li>
-        <li>
-          <p>每位猎人可以做4次</p>
-        </li>
-        <li>
-          <p>猎人必须1小时内完成</p>
+      <ul>
+        <li v-for="(item, index) in taskList" :key="index">
+          <div class="main-top">
+          <i class="iconfont icon-chaye"></i>
+          <span>雇主资金已托管，猎人赚钱有保障</span>
+        </div>
+          <ul class="main-center">
+            <li>
+              <p>奖励24小时内审核</p>
+            </li>
+            <li>
+              <p>每位猎人可以做{{item.tiTimeslimit}}次</p>
+            </li>
+            <li>
+              <p>猎人必须1小时内完成</p>
+            </li>
+          </ul>
+          <div class="main-bottom">
+            <div class="left">
+              <img src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1324531464,3169885786&fm=26&gp=0.jpg" alt="" class="main-img">
+            </div>
+            <div class="right">
+              <p>{{item.tiUsernumber}}</p>
+              <p class="right-id">ID: 1659807</p>
+            </div>
+            <div class="right-icon">
+              <i class="iconfont icon-chaye"></i>
+            </div>
+          </div>
         </li>
       </ul>
-      <div class="main-bottom">
-        <div class="left">
-          <img src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1324531464,3169885786&fm=26&gp=0.jpg" alt="" class="main-img">
-        </div>
-        <div class="right">
-          <p>佛系 <i class="iconfont icon-chaye"></i> 在线秒审</p>
-          <p class="right-id">ID: 1659807</p>
-        </div>
-        <div class="right-icon">
-          <i class="iconfont icon-chaye"></i>
-        </div>
-      </div>
     </div>
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
-    name: 'TaskMain'
+    name: 'TaskMain',
+    data() {
+      return {
+        taskList: []
+      };
+    },
+    created() {
+      this.init();
+    },
+    methods: {
+      init() {
+        axios.get('http://192.168.0.57:8080/task/getTask/1').then(res => {
+          this.taskList.push(res.data);
+        }).catch(err => {
+          console.log(err);
+        });
+      }
+    }
   };
 </script>
 

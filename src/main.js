@@ -8,6 +8,7 @@ import Icon from 'vue-awesome/components/Icon';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import VueTouch from 'vue-touch';
 import Vant from 'vant';
+import { HappyScroll } from 'vue-happy-scroll';
 // import fastclick from 'fastclick';
 import VueLazyload from 'vue-lazyload';
 import HttpUtil from './utils/http';
@@ -16,12 +17,14 @@ import 'mint-ui/lib/style.css';
 import './assets/scss/index.scss';
 import 'swiper/dist/css/swiper.css';
 import 'vant/lib/index.css';
+import 'vue-happy-scroll/docs/happy-scroll.css';
 
 Vue.use(VueTouch, {name: 'v-touch'});
 Vue.use(VueAwesomeSwiper /* { default global options } */);
 // fastclick.attach(document.body);
 Vue.use(MintUI);
 Vue.component('icon', Icon);
+Vue.component('happy-scroll', HappyScroll);
 Vue.use(Vant);
 Vue.prototype.$http = HttpUtil;
 

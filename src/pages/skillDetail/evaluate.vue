@@ -8,13 +8,13 @@
         </a>
       </div>
       <ul>
-        <li>
+        <li v-for="(item, index) in userList" :key="index">
           <div class="evaluate-left">
             <img src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1324531464,3169885786&fm=26&gp=0.jpg" alt="" class="main-img">
           </div>
           <div class="evaluate-content">
             <div class="evaluate-right">
-              <div class="right-name">猎人_1686768</div>
+              <div class="right-name">{{item.scUsernumber}}</div>
               <div class="right-star">
                 <i class="iconfont icon-chaye"></i>
                 <i class="iconfont icon-chaye"></i>
@@ -23,8 +23,8 @@
                 <i class="iconfont icon-chaye"></i>
               </div>
             </div>
-            <div class="right-data">昨天19:59</div>
-            <div class="right-info">该用户没有填写评价</div>
+            <div class="right-data">{{item.scDate}}</div>
+            <div class="right-info">{{item.scContent}}</div>
           </div>
         </li>
       </ul>
@@ -35,11 +35,29 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     name: 'evaluate',
+    data() {
+      return {
+        userList: []
+      };
+    },
+    created() {
+      this.init();
+    },
     methods: {
       toComment() {
         this.$router.push('/comment');
+      },
+      init() {
+        let skillId = this.$route.query.id;
+        axios.get('http://192.168.0.5:8080/skills/sel/' + skillId).then(result => {
+          this.userList = result.data.skillcomments;
+        }).catch(err => {
+          console.log(err);
+        });
       }
     }
   };

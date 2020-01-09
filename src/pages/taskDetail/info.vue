@@ -1,85 +1,93 @@
 <template>
     <div class="info">
-      <div class="info-describe">
-        <h3>任务描述</h3>
-        <ul>
-          <li>
-            <div class="describe-condition">
-              1只限新人！扫码登录，或者应用商店安装下载！点击设置，去赚钱填写邀请码guky8i领取新人奖励0.36元+1元
+      <ul>
+        <li v-for="(item,index) in taskList" :key="index">
+          <div class="info-describe">
+            <h3>任务描述</h3>
+            <ul>
+              <li>
+                <div class="describe-condition">
+                  {{item.tiDescribe}}
+                </div>
+              </li>
+            </ul>
+            <div class="describe-explain">
+              <div v-if="temp" class="describe-show">
+                用你以前的快手号登录就行！自己每天观看小视屏还有钱拿！当天任务当天完成
+              </div>
+              <div class="describe-other" @click="show()">
+                {{word}}
+                <i class="iconfont icon-chaye"></i>
+              </div>
             </div>
-          </li>
-          <li>
-            <div class="describe-condition">
-              2观看小视频达到2000金币(先填写邀请码再做任务)
+            <div class="describe-img">
+              <ul>
+                <li class="img-info">
+                  <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
+                </li>
+                <li class="img-info">
+                  <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
+                </li>
+              </ul>
             </div>
-          </li>
-        </ul>
-        <div class="describe-explain">
-          <div v-if="temp" class="describe-show">
-            用你以前的快手号登录就行！自己每天观看小视屏还有钱拿！当天任务当天完成
           </div>
-          <div class="describe-other" @click="show()">
-            {{word}}
-            <i class="iconfont icon-chaye"></i>
+          <div class="info-request">
+            <h3>任务要求</h3>
+            <p>{{item.tiRequire}}</p>
+            <div class="describe-img">
+              <ul>
+                <li class="img-info">
+                  <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
+                </li>
+                <li class="img-info">
+                  <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="describe-img">
-          <ul>
-            <li class="img-info">
-              <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
-            </li>
-            <li class="img-info">
-              <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="info-request">
-        <h3>任务要求</h3>
-        <p>和彤彤绑定好友</p>
-        <p>观看小视频达到2000金币收益</p>
-        <p>你的昵称(没有昵称不通过不重审)</p>
-        <p>要有新人奖励0.36元+1元，没有不通过</p>
-        <div class="describe-img">
-          <ul>
-            <li class="img-info">
-              <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
-            </li>
-            <li class="img-info">
-              <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="info-complete">
-        <div class="complete-left">
-          <ul>
-            <li>
-              <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
-            </li>
-            <li>
-              <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
-            </li>
-          </ul>
-        </div>
-        <span class="complete-right">0位猎人完成</span>
-      </div>
+          <div class="info-complete">
+            <div class="complete-left">
+              <ul>
+                <li>
+                  <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
+                </li>
+                <li>
+                  <img src="http://lxy.xgl6.top/img/微信图片_20191218182257.png" alt="">
+                </li>
+              </ul>
+            </div>
+            <span class="complete-right">{{item.tiPageview}}位猎人完成</span>
+          </div>
+        </li>
+      </ul>
     </div>
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
     name: 'TaskInfo',
     data() {
       return {
         temp: '',
-        word: '展开'
+        word: '展开',
+        taskList: []
       };
+    },
+    created() {
+      this.init();
     },
     methods: {
       show() {
         this.temp = !this.temp;
         this.word = this.temp ? '收起' : '展开';
+      },
+      init() {
+        axios.get('http://192.168.0.57:8080/task/getTask/1').then(res => {
+          this.taskList.push(res.data);
+        }).catch(err => {
+          console.log(err);
+        });
       }
     }
   };

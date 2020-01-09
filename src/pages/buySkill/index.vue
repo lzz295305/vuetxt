@@ -3,9 +3,11 @@
       <buy-header />
       <buy-main />
       <div class="task-footer">
-        <router-link class="footer-item" to="/home">
-          <span>确认购买并支付</span>
-        </router-link>
+        <div class="footer-item">
+          <span>
+            <a href="http://192.168.0.5:8080/pay/goAlipay">确认购买并支付</a>
+          </span>
+        </div>
       </div>
     </div>
 </template>
@@ -18,6 +20,8 @@
     components: {
       BuyHeader,
       BuyMain
+    },
+    methods: {
     }
   };
 </script>

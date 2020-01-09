@@ -27,7 +27,7 @@
     },
     methods: {
       init() {
-        axios.get('http://192.168.0.46:8080/task/getTask/1').then(result => {
+        axios.get('http://192.168.0.57:8080/task/getTask/1').then(result => {
           if (result.data !== null) {
             const goodsData = result.data;
             this.goodsList.push(goodsData);

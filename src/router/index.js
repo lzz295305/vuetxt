@@ -233,6 +233,16 @@ const routes = [
     component: () => import('pages/home/releaseDynamic')
   },
   {
+    path: '/task-release',
+    name: 'task',
+    component: () => import('pages/release/task')
+  },
+  {
+    path: '/skill-release',
+    name: 'task',
+    component: () => import('pages/release/skill')
+  },
+  {
     path: '*',
     redirect: '/home'
   }

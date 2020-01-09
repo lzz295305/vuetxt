@@ -73,7 +73,7 @@
         });
       },
       init() {
-        axios.get('http://192.168.0.253:8080/skills/selAll').then(result => {
+        axios.get('http://192.168.0.5:8080/skills/selAll').then(result => {
           let goodsData = result.data;
           this.skillList = goodsData;
         });

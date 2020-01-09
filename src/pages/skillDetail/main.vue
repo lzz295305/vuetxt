@@ -11,7 +11,7 @@
               <i class="iconfont icon-xiaoxi">5.0</i>
             </div>
           </div>
-          <div class="grade">
+          <div class="grade" v-show="false">
             <i class="iconfont icon-chaye">英勇黄金</i>
           </div>
           <div class="introduce">
@@ -19,11 +19,11 @@
           </div>
           <div class="main-bottom">
             <div class="left">
-              <img src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1324531464,3169885786&fm=26&gp=0.jpg" alt="" class="main-img">
+              <img :src="item.siImg" alt="" class="main-img">
             </div>
             <div class="right">
-              <p>在线秒审</p>
-              <p class="right-id">ID: 1659807</p>
+              <p>{{userList}}</p>
+              <p class="right-id">{{userId}}</p>
             </div>
             <div class="right-icon">
               <i class="iconfont icon-chaye"></i>
@@ -50,9 +50,7 @@
                 </li>
               </ul>
               <div class="main-news">
-                <span>老板说啥就是啥</span>
-                <span>一切听从老板指挥</span>
-                <span>做你的专属小跟班</span>
+                <span>{{item.siDescribe}}</span>
               </div>
             </div>
             <div class="info-detail">
@@ -60,19 +58,19 @@
               <ul>
                 <li>
                   <span>技能单价</span>
-                  <span>￥5.20</span>
+                  <span>￥{{item.siMoney}}</span>
                 </li>
                 <li>
                   <span>交付时间</span>
-                  <span>1天</span>
+                  <span>{{item.siDuration}}天</span>
                 </li>
                 <li>
                   <span>所属分类</span>
-                  <span>游戏电玩-和平精英</span>
+                  <span>{{item.siType}}</span>
                 </li>
                 <li>
                   <span>偏好接单时间</span>
-                  <span>16:00-24:00</span>
+                  <span>{{item.siDate}}</span>
                 </li>
               </ul>
             </div>
@@ -83,11 +81,15 @@
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
     name: 'SkillDetailMain',
     data() {
       return {
-        skillList: []
+        skillList: [],
+        evaluate: [],
+        userList: '',
+        userId: ''
       };
     },
     components: {
@@ -98,9 +100,14 @@
     methods: {
       init() {
         let skillId = this.$route.query.id;
-        this.$http.get('/skills/sel/' + skillId, result => {
-          this.skillList.push(result);
-        }, err => { console.log(err); });
+        axios.get('http://192.168.0.5:8080/skills/sel/' + skillId).then(result => {
+          this.skillList.push(result.data.skillsinfo);
+          this.evaluate.push(result.data.skillcomments);
+          this.userList = result.data.users.username;
+          this.userId = result.data.users.number;
+        }).catch(err => {
+          console.log(err);
+        });
       }
     }
   };

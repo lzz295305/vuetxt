@@ -11,7 +11,7 @@
         v-for="(item, index) in skillImg"
         :key="index"
       >
-        <a :href="item.linkUrl" alt="" class='slider-link'>
+        <a alt="" class='slider-link'>
           <img :src="item" alt="" class='slider-img'>
         </a>
       </swiper-slide>
@@ -25,6 +25,7 @@
   import {sliderOptions} from './config';
   import {getHomeSlider} from 'api/home';
   import MeLoading from 'base/loading';
+  import axios from 'axios';
 
   export default {
     name: 'SkillDetailSlider',
@@ -67,9 +68,11 @@
       },
       init() {
         let skillId = this.$route.query.id;
-        this.$http.get('/skills/sel/' + skillId, result => {
-          this.skillImg = result.siImgages;
-        }, err => { console.log(err); });
+        axios.get('http://192.168.0.5:8080/skills/sel/' + skillId).then(result => {
+          this.skillImg = result.data.skillsinfo.siImgages;
+        }).catch(err => {
+          console.log(err);
+        });
       }
     }
   };
