@@ -2,18 +2,20 @@
   <div>
     <div class="header">
       <span>我的</span>
-      <router-link class="icon" to="#">
+      <router-link class="icon" to="/settingup">
         <span class="iconfont icon-shezhi"></span>
       </router-link>
-      <router-link class="icon" to="#">
-        <span class="iconfont icon-xiaoxi"></span>
+      <router-link to="/messages">
+        <svg class="header-icon-1" aria-hidden="true">
+          <use xlink:href="#icon-message"></use>
+        </svg>
       </router-link>
     </div>
     <me-scroll style="height: 100vh">
       <div class="header-container">
         <div class="header-1">
-          <div class="header-img" to="">
-            <a href="#"><img src="https://cdn.xgl6.top/img/9ef126f301f12078f30713097fc4c1e.png" alt=""></a>
+          <div class="header-img">
+            <router-link to="/personaldata"><a href="#"><img src="https://cdn.xgl6.top/img/9ef126f301f12078f30713097fc4c1e.png" alt=""></a></router-link>
             <div class="header-Id">
               <span>猎人_165481</span>
               <router-link to="/personaldata">
@@ -39,7 +41,7 @@
               <td>总收入（元）</td>
             </tr>
           </table>
-          <router-link to="/index"><a href="#" class="button">个人资产</a></router-link>
+          <router-link to="/personalassets"><a href="#" class="button">个人资产</a></router-link>
         </div>
       </div>
       <div class="container-1">
@@ -50,7 +52,15 @@
                 <use xlink:href="#icon-daibanshixiang"></use>
               </svg>
               <span class="backlog-1">待办事项 &nbsp;&nbsp;&nbsp;|</span>
-              <span class="backlog-2">已完成全部事项</span>
+<!--              <span class="backlog-2">已完成全部事项</span>-->
+              <van-swipe indicator-color="transparent" style="height: 30px;
+              margin: 11px 30px 0 0;padding-top: 10px;transform: translateZ(0)" vertical
+                         class="swiper-bottom" autoplay="2000">
+                <van-swipe-item>待完成任务1</van-swipe-item>
+                <van-swipe-item>待完成任务2</van-swipe-item>
+                <van-swipe-item>待完成任务3</van-swipe-item>
+                <van-swipe-item>待完成任务4</van-swipe-item>
+              </van-swipe>
             </li>
           </ul>
         </div>
@@ -66,164 +76,229 @@
           </li>
           <router-link to="/orderreceiving">
             <li>
-            <svg class="order-container-2" aria-hidden="true">
-              <use xlink:href="#icon-order-copy"></use>
-            </svg>
-            <span>接单</span>
-          </li>
+              <svg class="order-container-2" aria-hidden="true">
+                <use xlink:href="#icon-order-copy"></use>
+              </svg>
+              <span>接单</span>
+            </li>
           </router-link>
         </ul>
       </div>
       <div class="container-3">
         <span>我在做的任务</span>
         <ul>
-          <li>
-            <svg class="order-container-3" aria-hidden="true">
-              <use xlink:href="#icon-jinhangzhong"></use>
-            </svg>
-            <span class="order-container-3-word">进行中（0）</span>
-          </li>
-          <li>
-            <svg class="order-container-4" aria-hidden="true">
-              <use xlink:href="#icon-swticonyijieshu"></use>
-            </svg>
-            <span class="order-container-4-word">已结束（0）</span>
-          </li>
+          <router-link to="/task-in-progress">
+            <li>
+              <svg class="order-container-3" aria-hidden="true">
+                <use xlink:href="#icon-jinhangzhong"></use>
+              </svg>
+              <span class="order-container-3-word">进行中（0）</span>
+            </li>
+          </router-link>
+          <router-link to="/finished">
+            <li>
+              <svg class="order-container-4" aria-hidden="true">
+                <use xlink:href="#icon-swticonyijieshu"></use>
+              </svg>
+              <span class="order-container-4-word">已结束（0）</span>
+            </li>
+          </router-link>
         </ul>
       </div>
       <div class="container-4">
         <span>我发布的任务</span>
         <ul>
-          <li>
-            <svg class="order-container-5" aria-hidden="true">
-              <use xlink:href="#icon-daifukuan"></use>
-            </svg>
-            <a class="order-container-5-word">代付款（0）</a>
-          </li>
+          <router-link to="/published-tasks">
+            <li>
+              <svg class="order-container-5" aria-hidden="true">
+                <use xlink:href="#icon-daifukuan"></use>
+              </svg>
+                <a class="order-container-5-word">代付款（0）</a>
+            </li>
+          </router-link>
+          <router-link to="/published-tasks">
           <li>
             <svg class="order-container-6" aria-hidden="true">
               <use xlink:href="#icon-jinhangzhong"></use>
             </svg>
             <a class="order-container-6-word">进行中（0）</a>
           </li>
+          </router-link>
+          <router-link to="/published-tasks">
           <li>
             <svg class="order-container-7" aria-hidden="true">
               <use xlink:href="#icon-jujue"></use>
             </svg>
             <a class="order-container-7-word">已拒绝（0）</a>
           </li>
+          </router-link>
         </ul>
       </div>
       <div class="container-5">
         <span>我购买的技能</span>
         <ul>
-          <li>
-            <svg class="order-container-8" aria-hidden="true">
-              <use xlink:href="#icon-order-copy"></use>
-            </svg>
-            <a class="order-container-8-word">购买的技能订单</a>
-          </li>
-          <li>
-            <svg class="order-container-9" aria-hidden="true">
-              <use xlink:href="#icon-shoucang"></use>
-            </svg>
-            <a class="order-container-9-word">收藏的技能</a>
-          </li>
+          <router-link to="/buy-skills">
+            <li>
+              <svg class="order-container-8" aria-hidden="true">
+                <use xlink:href="#icon-order-copy"></use>
+              </svg>
+                <a class="order-container-8-word">购买的技能订单</a>
+            </li>
+          </router-link>
+          <router-link to="/buy-skills/collected-skills">
+            <li>
+              <svg class="order-container-9" aria-hidden="true">
+                <use xlink:href="#icon-shoucang"></use>
+              </svg>
+                <a class="order-container-9-word">收藏的技能</a>
+            </li>
+          </router-link>
         </ul>
       </div>
       <div class="container-6">
         <div>
         <span class="container-6-span-1">猎人成长体系</span>
-        <span class="container-6-span-2">经验等级说明</span>
+        <router-link to="/experience-level">
+          <span class="container-6-span-2">经验等级说明</span>
+        </router-link>
         </div>
         <ul>
           <li>
             <svg class="order-container-10" aria-hidden="true">
               <use xlink:href="#icon-dengji"></use>
             </svg>
-            <a class="order-container-10-word">一级见习</a>
+            <a class="order-container-10-word"  @click="init">一级见习</a>
           </li>
-          <li class="progress">
-            <el-progress :percentage="0"></el-progress>
-          </li>
+<!--          <li class="progress">-->
+<!--            <el-progress :percentage="20"></el-progress>-->
+<!--          </li>-->
         </ul>
       </div>
       <div class="container-7">
         <span class="container-7-span-1">猎人信用积分</span>
-        <span class="container-7-span-2">信用积分说明</span>
+        <router-link to="/credit-score">
+          <span class="container-7-span-2">信用积分说明</span>
+        </router-link>
         <span class="container-7-span-3">5.0</span>
-        <div class="block">
-<!--          <span class="demonstration">默认不区分颜色</span>-->
-          <el-rate
-            v-model="value"
-            show-text>
-          </el-rate>
-        </div>
-        <a class="container-7-a-4">完美声誉</a>
+<!--        <div class="block">-->
+<!--&lt;!&ndash;          <span class="demonstration">默认不区分颜色</span>&ndash;&gt;-->
+<!--          <el-rate-->
+<!--            v-model="value"-->
+<!--            show-text>-->
+<!--          </el-rate>-->
+<!--        </div>-->
+          <a class="container-7-a-4" @click=init>完美声誉</a>
       </div>
       <div class="container-8">
         <span class="container-8-span-1">其他功能</span>
-        <ul>
-          <li>
-            <svg class="order-container-11" aria-hidden="true">
-              <use xlink:href="#icon-yaoqinghaoyou"></use>
-            </svg>
-            <a class="order-container-11-word">我的关系</a>
-          </li>
-          <li>
-            <svg class="order-container-12" aria-hidden="true">
-              <use xlink:href="#icon-yaoqinghaoyou1"></use>
-            </svg>
-            <a class="order-container-12-word">补填邀请码</a>
-          </li>
-        </ul>
+          <router-link to="/my-relationship">
+            <div>
+             <svg class="order-container-11" aria-hidden="true">
+                <use xlink:href="#icon-yaoqinghaoyou"></use>
+              </svg>
+              <a class="order-container-11-word">我的关系</a>
+            </div>
+          </router-link>
+            <div>
+              <van-cell is-link @click="showPopup">
+                <svg class="order-container-12" aria-hidden="true">
+                  <use xlink:href="#icon-yaoqinghaoyou1"></use>
+                </svg>
+              </van-cell>
+              <span class="order-container-12-word">补填邀请码</span>
+            </div>
       </div>
       <div class="container-9">
-        <span>编辑</span>
+        <router-link to="/redact"><span>编辑</span></router-link>
       </div>
       <div class="container-10">
       </div>
     </me-scroll>
+    <van-popup v-model="show" round :style="{ height: '23%',width:'70%' }">
+      <div class="Invitation-code">
+        <div>
+          <span>补填我收到的邀请码</span>
+          <input type="text" maxlength="6" style="text-align: center;margin: 20px 0 ;width: 70%; font-size: 25px;
+          border-bottom: #5d656b 0.5px solid;">
+        </div>
+        <div class="Invitation-header">
+          <span class="Invitation-header-span1">确定</span>
+          <span class="Invitation-header-span2">取消</span>
+        </div>
+      </div>
+    </van-popup>
   </div>
 </template>
 
 <script>
+  import Axios from 'axios';
   import MeScroll from 'base/scroll/index.vue';
   export default {
     name: 'Personal',
-    components: {
-      MeScroll
-    },
     data() {
       return {
-        value1: null
+        show: false,
+        value: 4.5
       };
+    },
+    components: {
+      MeScroll
     },
     methods: {
       go() {
         this.$router.push('/issueskill');
+      },
+      back() {
+        this.$router.go(-1);
+      },
+      showPopup() {
+        this.show = true;
+      },
+      init() {
+        Axios.get('http://192.168.0.5:8080/aliPay/wapPay/1/1/1').then(result => {
+          let jieguo = result.data;
+          const div = document.createElement('div');
+          div.innerHTML = jieguo;
+          document.body.appendChild(div);
+          document.forms[0].submit();
+        }).catch(err => {
+          console.log(err);
+        });
       }
-      // goorddrreceiving() {
-      //   this.$router.push('/orderreceiving')
-      // }
     }
   };
 </script>
 
 <style scoped>
-.header {
-  height: 55px;
-  width: 100%;
-  background-color: #FDE344;
+  .header-icon-1 {
+    margin: 15px 0;
+    color: black;
+    float: right;
+    width: 1.9em;
+    height: 1.9em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+  .swiper-bottom {
+    font-size: 15px;
+    float: right;
+    width: 150px;
+  }
+  .header {
+    height: 55px;
+    width: 100%;
+    background-color: #FDE344;
 }
-.header span {
-  font-size: 22px;
-  margin-left: 15px;
-  line-height: 55px;
-  color: black;
+  .header span {
+    font-size: 22px;
+    margin-left: 15px;
+    line-height: 55px;
+    color: black;
 }
   .icon {
     float: right;
+    color: black;
   }
   .icon span {
     font-size: 22px;
@@ -246,7 +321,7 @@
   }
   .header-1 {
     background-color: #FDE344;
-    margin: 0px 13px 0px 13px;
+    margin: 0 13px 0 13px;
     /*border: 3px solid deepskyblue;*/
     height: 152px;
   }
@@ -285,7 +360,7 @@
 
   .table-style {
     /*border:blue 2px solid ;*/
-    margin: 5px 0 0px 13px;
+    margin: 5px 0 0 13px;
     line-height: 15px;
   }
   .table-style-row {
@@ -303,7 +378,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
-    margin: -30px 0px;
+    margin: -30px 0;
     cursor: pointer;
   }
 
@@ -329,7 +404,7 @@
   padding: 16px;
 }
   .backlog-1 {
-    margin: 8px -8px 8px 0px;
+    margin: 8px -8px 8px 0;
     line-height: 57px;
     font-size: 15px;
     text-align: center;
@@ -391,7 +466,6 @@
     float: left;
     font-size: 17px;
     color: black;
-    color: black;
     margin: 13px 0 0 15px;
   }
 
@@ -402,7 +476,7 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 50px -73px;
+    margin: 50px 0 50px -73px;
   }
   .order-container-3-word {
     float: left;
@@ -416,7 +490,7 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 50px 40px;
+    margin: 50px 0 50px 40px;
   }
   .order-container-4-word {
     float: left;
@@ -444,11 +518,11 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 50px -73px;
+    margin: 50px 0 50px -73px;
   }
   .order-container-5-word {
     float: left;
-    margin: 87px 0px 0px -83px;
+    margin: 87px 0 0 -83px;
   }
 
   .order-container-6 {
@@ -458,11 +532,11 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 50px 43px;
+    margin: 50px 0 50px 43px;
   }
   .order-container-6-word {
     float: left;
-    margin: 87px 0px 0px -42px;
+    margin: 87px 0 0 -42px;
   }
 
   .order-container-7 {
@@ -472,11 +546,11 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 50px 43px;
+    margin: 50px 0 50px 43px;
   }
   .order-container-7-word {
     float: left;
-    margin: 87px 0px 0px -42px;
+    margin: 87px 0 0 -42px;
   }
 
   .container-5 {
@@ -499,11 +573,11 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 50px -73px;
+    margin: 50px 0 50px -73px;
   }
   .order-container-8-word {
     float: left;
-    margin: 87px 0px 0px -95px;
+    margin: 87px 0 0 -95px;
   }
 
   .order-container-9 {
@@ -513,11 +587,11 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 50px 43px;
+    margin: 50px 0 50px 43px;
   }
   .order-container-9-word {
     float: left;
-    margin: 87px 0px 0px -45px;
+    margin: 87px 0  0 -45px;
   }
 
 /*成长体系*/
@@ -536,7 +610,6 @@
   }
   .container-6-span-2 {
     float: right;
-    /*border: 1px red solid;*/
     font-size: 13px;
     color: blue;
     margin: 13px 13px 0 62px;
@@ -548,11 +621,11 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 50px -73px;
+    margin: 50px 0 50px -73px;
   }
   .order-container-10-word {
     float: left;
-    margin: 87px 0px 0px -83px;
+    margin: 87px 0 0 -83px;
   }
   .progress {
     float: right;
@@ -576,7 +649,6 @@
   }
   .container-7-span-2 {
     float: right;
-    /*border: 1px red solid;*/
     font-size: 13px;
     color: blue;
     margin: 13px 13px 0 62px;
@@ -585,15 +657,14 @@
     float: left;
     font-size: 25px;
     color: orange;
-    margin: 50px 0px 50px -70px;
+    margin: 50px 0 50px -76px;
   }
   .container-7-a-4 {
-    /*border: 1px red solid;*/
     float: left;
-    margin: 13px 0px 0px 40px;
+    margin: 86px 0 0 -81px;
   }
   .block {
-    margin: 55px 0px 0px 170px;
+    margin: 55px 0 0 170px;
   }
 
 /*  其他功能*/
@@ -617,11 +688,11 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 0px -39px;
+    margin: 50px 0 0 -39px;
   }
   .order-container-11-word {
     float: left;
-    margin: 87px 0px 0px -47px;
+    margin: 87px 0 0 -47px;
   }
   .order-container-12 {
     float: left;
@@ -630,11 +701,11 @@
     vertical-align: -0.2em;
     fill: currentColor;
     overflow: hidden;
-    margin: 50px 0px 0px 85px;
+    margin: 50px 0 0 85px;
     }
   .order-container-12-word {
     float: left;
-    margin: 87px 0px 0px -45px;
+    margin: 87px 0 0 -45px;
     }
 
 /*  编辑*/
@@ -654,5 +725,35 @@
 
   .container-10 {
     height: 110px;
+  }
+
+/*  邀请码弹出框*/
+  .Invitation-code {
+    padding: 10px;
+    height: 110px;
+    border-bottom: #F8F8F8 2px solid;
+    font-size: 14px;
+    color: black;
+    text-align: center;
+  }
+  .Invitation-header {
+    height: 43px;
+    margin: 10px;
+  }
+  .Invitation-header-span1 {
+    color: #4EBDFB;
+    margin: 17px 0 0 0;
+    height: 33px;
+    font-size: 15px;
+    float: left;
+    width: 49%;
+    border-right: #F8F8F8 2px solid;
+  }
+  .Invitation-header-span2 {
+    margin: 17px 0 0 0;
+    height: 33px;
+    font-size: 15px;
+    float: right;
+    width: 49%;
   }
 </style>

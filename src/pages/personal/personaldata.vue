@@ -4,7 +4,7 @@
     <div class="header-return">
       <router-link to="/personal">
         <svg class="header-img-right" aria-hidden="true">
-          <use xlink:href="#icon-fanhui" @click="back"></use>
+          <use xlink:href="#icon-fanhui"></use>
         </svg>
       </router-link>
     </div>
@@ -24,15 +24,19 @@
       </div>
     </div>
     <div class="header-container-footer">
-      <div class="header-container-footer-1">
-        <span>0</span>
-        <p style="padding: 7px">关注</p>
-      </div>
+      <router-link to="/my-relationship">
+        <div class="header-container-footer-1">
+          <span>1</span>
+          <p style="padding: 7px">关注</p>
+        </div>
+      </router-link>
       <span style="margin-left: 3px; font-size: 35px; color: whitesmoke">|</span>
-      <div class="header-container-footer-2">
-        <span>0</span>
-        <p style="padding: 7px">被关注</p>
-      </div>
+      <router-link to="/my-relationship">
+        <div class="header-container-footer-2">
+          <span>0</span>
+          <p style="padding: 7px">被关注</p>
+        </div>
+      </router-link>
     </div>
   </div>
   <div class="uls">
@@ -97,7 +101,7 @@
     },
     data() {
       return {
-        index: 2
+        index: 1
       };
     },
     methods: {
@@ -122,10 +126,12 @@
     transform: scale(1.2);
     opacity: 0.8;
     transition: all 0.5s ease-in-out;
+    /*opacity: 0;*/
+    /*-webkit-transform: translate(-100%,0);*/
+    /*transform: translate(-100%,0);*/
   }
 
   .fade-enter-active,.fade-leave-avtive {
-    /*transition: opacity 0.3s;*/
     transition: all .8s ease;
   }
   .fade-enter,.fade-leave-to {

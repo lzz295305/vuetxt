@@ -25,7 +25,7 @@
     fill: currentColor;
     overflow: hidden;
     text-align: center;
-    margin: 0px 30px;
+    margin: 0 30px;
   }
   .skill {
     font-size: 14px;

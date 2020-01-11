@@ -8,6 +8,7 @@ import Icon from 'vue-awesome/components/Icon';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import VueTouch from 'vue-touch';
 import Vant from 'vant';
+import VCharts from 'v-charts';
 import { HappyScroll } from 'vue-happy-scroll';
 // import fastclick from 'fastclick';
 import VueLazyload from 'vue-lazyload';
@@ -26,6 +27,7 @@ Vue.use(MintUI);
 Vue.component('icon', Icon);
 Vue.component('happy-scroll', HappyScroll);
 Vue.use(Vant);
+Vue.use(VCharts);
 Vue.prototype.$http = HttpUtil;
 
 VueTouch.config.swipe = {

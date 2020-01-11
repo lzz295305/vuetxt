@@ -3,58 +3,44 @@
     <div class="header-return">
       <div class="header-container">
         <router-link to="/personal">
-          <svg class="header-img-right" aria-hidden="true">
-            <use xlink:href="#icon-fanhui" @click="back"></use>
-          </svg>
+<!--          <svg class="header-img-right" aria-hidden="true">-->
+<!--            <use xlink:href="#icon-fanhui" @click="back"></use>-->
+<!--          </svg>-->
         </router-link>
         <div class="issueskill-header-2">
-          <span>发布的技能</span>
-        </div>
-        <div class="issueskill-header-3">
-          <span>发技能</span>
+          <span>购买的技能</span>
         </div>
       </div>
     </div>
     <div class="header-container2">
-      <router-link to="/issueskill/myskill">
-        <div  @click="change(1)" :class="{'active': index === 1}" class="header-container-span1">
-          <span>我的技能(0/3)</span>
-        </div>
-      </router-link>
-      <router-link to="/issueskill/ordermanagment">
-        <div  @click="change(2)" :class="{'active': index === 2}" class="header-container-span2">
-          <span>订单管理</span>
-        </div>
-      </router-link>
+      <div  @click="change(1)" :class="{'active': index === 1}" class="header-container-span1">
+        <span>购买的技能订单</span>
+      </div>
+      <div  @click="change(2)" :class="{'active': index === 2}" class="header-container-span2">
+        <span>收藏的技能</span>
+      </div>
     </div>
-    <!--  <transition name="fade">-->
-    <!--    <router-view class="zhanwei"></router-view>-->
-    <!--  </transition>-->
     <div>
       <div v-if="index == 1">
-        <myskill></myskill>
+<!--        <skills-of-the-order></skills-of-the-order>-->
       </div>
     </div>
     <div>
       <div v-if="index == 2">
-        <ordermanagment></ordermanagment>
+<!--        <collected-skills></collected-skills>-->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import ordermanagment from './ordermanagment';
-  import myskill from './myskill';
   export default {
-    name: 'issueskill',
+    name: 'buy-skills',
     components: {
-      ordermanagment,
-      myskill
     },
     data() {
       return {
-        index: 2
+        index: 1
       };
     },
     methods: {
@@ -87,17 +73,13 @@
     height: 100%;
     margin: 0 auto;
     width: 90%;
-    /*border: 1px #4EBDFB solid;*/
   }
   .header-return {
-    /*padding-top: 21px;*/
     padding-left: 8px;
     height: 55px;
-    /*border: 2px red solid;*/
   }
   .header-container {
     height: 55px;
-    /*border: 2px seagreen solid;*/
   }
   .header-img-right {
     margin: 2px auto;
@@ -126,7 +108,6 @@
     margin: 28px auto;
     line-height: 43px;
     border-radius: 30px;
-    /*border: #FDE344 1px solid;*/
     background-color: #FDE344;
   }
   /*  头部*/
@@ -137,17 +118,6 @@
     color: black;
     /*font-weight: bold;*/
     font-size: 18px;
-    /*border: 1px red solid;*/
-  }
-
-  .issueskill-header-3 {
-    float: right;
-    width: 50px;
-    margin: -28px auto;
-    text-align: center;
-    color: black;
-    /*font-weight: bold;*/
-    font-size: 13px;
     /*border: 1px red solid;*/
   }
 

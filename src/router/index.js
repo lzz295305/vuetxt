@@ -119,23 +119,6 @@ const routes = [
     component: () => import('pages/moreTask/alliance')
   },
   {
-    path: '/issueskill',
-    name: 'issueskill',
-    component: () => import('pages/personal/issueskill'),
-    children: [
-      {
-        path: 'ordermanagment',
-        name: 'ordermanagment',
-        component: () => import('pages/personal/ordermanagment')
-      },
-      {
-        path: 'myskill',
-        name: 'myskill',
-        component: () => import('pages/personal/myskill')
-      }
-    ]
-  },
-  {
     path: '/personaldata',
     name: 'personaldata',
     component: () => import('pages/personal/personaldata')
@@ -173,9 +156,146 @@ const routes = [
     ]
   },
   {
+    path: '/orderreceiving',
+    name: 'issueskill',
+    component: () => import('pages/personal/orderreceiving')
+  },
+  {
+    path: '/task-in-progress',
+    name: 'tash-in-progress',
+    component: () => import('pages/personal/task-in-progress'),
+    children: [
+      {
+        path: 'to-submit',
+        name: 'to-submit',
+        component: () => import('pages/personal/to-submit')
+      },
+      {
+        path: 'to-audit',
+        name: 'to-audit',
+        component: () => import('pages/personal/to-audit')
+      },
+      {
+        path: 'reward',
+        name: 'reward',
+        component: () => import('pages/personal/reward')
+      }
+    ]
+  },
+  {
     path: '/editdata',
     name: 'editdata',
     component: () => import('pages/personal/editdata')
+  },
+  {
+    path: '/published-tasks',
+    name: 'published-tasks',
+    component: () => import('pages/personal/published-tasks')
+  },
+  {
+    path: '/personalassets',
+    name: 'personalassets',
+    component: () => import('pages/personal/personalassets')
+  },
+  {
+    path: '/buy-skills',
+    name: 'buy-skills',
+    component: () => import('pages/personal/buy-skills')
+  },
+  {
+    path: '/cash-statement',
+    name: 'cash-statement',
+    component: () => import('pages/personal/personalassets/cash-statement')
+  },
+  {
+    path: '/credit-score',
+    name: 'credit-score',
+    component: () => import('pages/personal/credit-score')
+  },
+  {
+    path: '/experience-level',
+    name: 'experience-level',
+    component: () => import('pages/personal/experience-level')
+  },
+  {
+    path: '/my-relationship',
+    name: 'my-relationship',
+    component: () => import('pages/personal/my-relationship')
+  },
+  {
+    path: '/rename',
+    name: 'rename',
+    component: () => import('pages/personal/editdata/rename')
+  },
+  {
+    path: '/finished',
+    name: 'finished',
+    component: () => import('pages/personal/finished')
+  },
+  {
+    path: '/redact',
+    name: 'redact',
+    component: () => import('pages/personal/redact')
+  },
+  {
+    path: '/property',
+    name: 'property',
+    component: () => import('pages/personal/personalassets/property')
+  },
+  {
+    path: '/balance',
+    name: 'balance',
+    component: () => import('pages/personal/personalassets/balance')
+  },
+  {
+    path: '/real-name',
+    name: 'real-name',
+    component: () => import('pages/personal/personalassets/real-name')
+  },
+  {
+    path: '/service-charge',
+    name: 'service-charge',
+    component: () => import('pages/personal/personalassets/service-charge')
+  },
+  {
+    path: '/signature',
+    name: 'signature',
+    component: () => import('pages/personal/editdata/signature')
+  },
+  {
+    path: '/basic-information',
+    name: 'basic-information',
+    component: () => import('pages/personal/editdata/basic-information')
+  },
+  {
+    path: '/skills-to-discuss',
+    name: 'skills-to-discuss',
+    component: () => import('pages/personal/skills-to-discuss')
+  },
+  {
+    path: '/contact-way',
+    name: 'contact-way',
+    component: () => import('pages/personal/editdata/contact-way')
+  },
+  {
+    path: '/work-experience',
+    name: 'work-experience',
+    component: () => import('pages/personal/editdata/work-experience')
+  },
+  {
+    path: '/paysuccess',
+    name: 'paysuccess',
+    component: () => import('pages/personal/paysuccess')
+  },
+  {
+    path: '/sell',
+    name: 'sell',
+    component: () => import('pages/personal/personalassets/sell')
+  },
+  {
+    path: '/settingup',
+    name: 'settingup',
+    component: () => import('pages/personal/settingup')
   },
   {
     path: '/skillBranch',
@@ -254,7 +374,7 @@ const routes = [
   },
   {
     path: '*',
-    redirect: '/login'
+    redirect: '/home'
   }
 ];
 

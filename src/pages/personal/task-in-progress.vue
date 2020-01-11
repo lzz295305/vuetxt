@@ -3,58 +3,49 @@
     <div class="header-return">
       <div class="header-container">
         <router-link to="/personal">
-          <svg class="header-img-right" aria-hidden="true">
-            <use xlink:href="#icon-fanhui" @click="back"></use>
-          </svg>
+<!--          <svg class="header-img-right" aria-hidden="true">-->
+<!--            <use xlink:href="#icon-fanhui" @click="back"></use>-->
+<!--          </svg>-->
         </router-link>
         <div class="issueskill-header-2">
-          <span>发布的技能</span>
-        </div>
-        <div class="issueskill-header-3">
-          <span>发技能</span>
+          <span>在做的任务</span>
         </div>
       </div>
     </div>
-    <div class="header-container2">
-      <router-link to="/issueskill/myskill">
-        <div  @click="change(1)" :class="{'active': index === 1}" class="header-container-span1">
-          <span>我的技能(0/3)</span>
-        </div>
-      </router-link>
-      <router-link to="/issueskill/ordermanagment">
-        <div  @click="change(2)" :class="{'active': index === 2}" class="header-container-span2">
-          <span>订单管理</span>
-        </div>
-      </router-link>
+    <div class="header-container-underway">
+      <span>进行中</span>
     </div>
-    <!--  <transition name="fade">-->
-    <!--    <router-view class="zhanwei"></router-view>-->
-    <!--  </transition>-->
+    <div class="header-container2">
+      <div  @click="change(1)" :class="{'active': index === 1}" class="header-container-span1">
+        <span>待提交</span>
+      </div>
+      <div  @click="change(2)" :class="{'active': index === 2}" class="header-container-span2">
+        <span>待审核</span>
+      </div>
+    </div>
     <div>
       <div v-if="index == 1">
-        <myskill></myskill>
+        <my-attention></my-attention>
       </div>
     </div>
     <div>
       <div v-if="index == 2">
-        <ordermanagment></ordermanagment>
+<!--        <skills-of-the-order></skills-of-the-order>-->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import ordermanagment from './ordermanagment';
-  import myskill from './myskill';
+  import MyAttention from './my-attention';
   export default {
-    name: 'issueskill',
+    name: 'task-in-progress',
     components: {
-      ordermanagment,
-      myskill
+      MyAttention
     },
     data() {
       return {
-        index: 2
+        index: 1
       };
     },
     methods: {
@@ -92,12 +83,24 @@
   .header-return {
     /*padding-top: 21px;*/
     padding-left: 8px;
-    height: 55px;
+    height: 50px;
     /*border: 2px red solid;*/
   }
   .header-container {
     height: 55px;
     /*border: 2px seagreen solid;*/
+  }
+  .header-container-underway {
+    height: 40px;
+    width: 120%;
+    /*background-color: #F8F8F8;*/
+    color: black;
+    font-weight: bold;
+    font-size: 19px;
+    margin: 0 0 12px -30px;
+    padding-top: 12px;
+    text-align: center;
+    border-bottom: #F8F8F8 2px solid;
   }
   .header-img-right {
     margin: 2px auto;
@@ -137,17 +140,6 @@
     color: black;
     /*font-weight: bold;*/
     font-size: 18px;
-    /*border: 1px red solid;*/
-  }
-
-  .issueskill-header-3 {
-    float: right;
-    width: 50px;
-    margin: -28px auto;
-    text-align: center;
-    color: black;
-    /*font-weight: bold;*/
-    font-size: 13px;
     /*border: 1px red solid;*/
   }
 
