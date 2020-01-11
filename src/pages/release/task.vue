@@ -1,31 +1,9 @@
 <template>
     <div class="task">
       <me-navbar class="header">
-        <i class="iconfont icon-fanhui"
-           slot="left"
-           @click="showPopup1"
-        >
-          <action-sheet
-            v-model="show1"
-            :actions="actions1"
-            @select="onSelect"
-            description="是否保存当前信息作为草稿，以便下次进来继续编辑"
-          />
-        </i>
+        <i class="iconfont icon-fanhui" slot="left" @click="showPopup1"></i>
         <i slot="title">发布任务-{{title}}</i>
-        <i slot="right"
-           class="iconfont"
-           @click="showPopup2"
-           v-show="save"
-        >
-          <action-sheet
-            v-model="show2"
-            :actions="actions2"
-            @select="Select"
-            description="进入草稿将会丢失刚才编辑的内容，您确认进入草稿吗？"
-          />
-          草稿
-        </i>
+        <i slot="right" class="iconfont" @click="showPopup2" v-show="save">草稿</i>
       </me-navbar>
       <div class="task-context">
         <happy-scroll>
@@ -42,6 +20,18 @@
       <div class="footer">
         <span>立即提交</span>
       </div>
+      <action-sheet
+        v-model="show1"
+        :actions="actions1"
+        @select="onSelect"
+        description="是否保存当前信息作为草稿，以便下次进来继续编辑"
+      />
+      <action-sheet
+        v-model="show2"
+        :actions="actions2"
+        @select="Select"
+        description="进入草稿将会丢失刚才编辑的内容，您确认进入草稿吗？"
+      />
     </div>
 </template>
 

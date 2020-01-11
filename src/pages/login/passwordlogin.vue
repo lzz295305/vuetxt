@@ -49,7 +49,7 @@
             localStorage.setItem('UserInfo', JSON.stringify(result));
             this.$router.push('/home');
           } else {
-            alert('没有此用户,请先去注册账户');
+            alert('用户名和密码不一致');
           }
         }, err => {
           console.log(err);

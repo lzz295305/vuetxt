@@ -234,17 +234,27 @@ const routes = [
   },
   {
     path: '/task-release',
-    name: 'task',
+    name: 'task-release',
     component: () => import('pages/release/task')
   },
   {
     path: '/skill-release',
-    name: 'task',
+    name: 'skill-release',
     component: () => import('pages/release/skill')
   },
   {
+    path: '/skill-creation',
+    name: 'skill-creation',
+    component: () => import('pages/release/skillCreation')
+  },
+  {
+    path: '/skill-build',
+    name: 'skill-build',
+    component: () => import('pages/release/skillBuild')
+  },
+  {
     path: '*',
-    redirect: '/home'
+    redirect: '/login'
   }
 ];
 

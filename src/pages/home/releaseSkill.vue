@@ -9,12 +9,12 @@
         class="nav-item"
         v-for="(item, index) in navs"
         :key="index"
-        @click="ToTask(index)"
+        @click="ToTask(item.text, index)"
       >
-        <router-link :to="{path: '/skillBranch'}" class="nav-link">
+        <div class="nav-link">
           <img :src="item.picUrl" class="nav-pic">
           <span>{{item.text}}</span>
-        </router-link>
+        </div>
       </li>
     </ul>
   </div>
@@ -40,11 +40,12 @@
       back() {
         this.$router.go(-1);
       },
-      ToTask(index) {
+      ToTask(content, index) {
         this.$router.push({
           path: '/skill-release',
           query: {
-            id: index
+            id: index,
+            title: content
           }
         });
       }

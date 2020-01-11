@@ -47,13 +47,22 @@
         let number = 1;
         this.$http.get('/login/gc/' + phone + '/' + number, result => {
           console.log(1);
-        }, err => { console.log(err); });
+        }, err => {
+          console.log(err);
+          alert('发送失败');
+        });
       },
       toHome() {
         let phone = this.usernameModel;
         let vc = this.newModel;
         this.$http.get('/login/vcl/' + phone + '/' + vc, result => {
           console.log(result);
+          if (result.number) {
+            localStorage.setItem('UserInfo', JSON.stringify(result));
+            this.$router.push('/home');
+          } else {
+            alert('手机号或验证码有误');
+          }
         }, err => {
           console.log(err);
         });

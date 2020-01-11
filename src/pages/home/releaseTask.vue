@@ -9,7 +9,7 @@
           class="nav-item"
           v-for="(item, index) in navs"
           :key="index"
-          @click="ToTask(item.text, index)"
+          @click="ToTask(item.text)"
         >
           <div class="nav-link">
             <img :src="item.picUrl" class="nav-pic">

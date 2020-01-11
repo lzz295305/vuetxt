@@ -92,8 +92,6 @@
         userId: ''
       };
     },
-    components: {
-    },
     mounted() {
       this.init();
     },

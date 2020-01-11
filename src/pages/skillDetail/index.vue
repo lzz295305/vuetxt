@@ -20,11 +20,11 @@
             <i class="iconfont icon-xiaoxi">联系猎人</i>
           </span>
         </router-link>
-        <router-link class="footer-right" :to="{path: '/buySkill'}">
+        <div class="footer-right" @click="init">
           <span>
             <i class="iconfont icon-chaye">购买技能</i>
           </span>
-        </router-link>
+        </div>
       </div>
     </div>
 </template>
@@ -54,6 +54,18 @@
       },
       pullToRefresh(end) {
         this.$refs.slider.update().then(end);
+      },
+      init() {
+        let skillId = this.$route.query.id;
+        this.TOBuy(skillId);
+      },
+      TOBuy(key) {
+        this.$router.push({
+          path: '/buySkill',
+          query: {
+            id: key
+          }
+        });
       }
     }
   };
