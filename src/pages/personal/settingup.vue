@@ -1,89 +1,110 @@
 <template>
-<div>
-  <div class="header-return">
-    <div class="header-container">
-      <router-link to="/personal">
-        <svg class="header-img-right" aria-hidden="true">
-          <use xlink:href="#icon-fanhui"></use>
-        </svg>
-      </router-link>
-      <div class="header-container-center">
-        <span>设置</span>
+  <div>
+    <div class="header-return">
+      <div class="header-container">
+        <router-link to="/personal">
+          <svg class="header-img-right" aria-hidden="true">
+            <use xlink:href="#icon-fanhui"></use>
+          </svg>
+        </router-link>
+        <div class="header-container-center">
+          <span>设置</span>
+        </div>
       </div>
+    </div>
+    <div class="container">
+      <div class="container1">
+        <div class="container-1">
+          <span>通知管理</span>
+          <svg class="container-1-right" aria-hidden="true">
+            <use xlink:href="#icon-you"></use>
+          </svg>
+        </div>
+        <div class="container-1">
+        <span>公开关注关系</span>
+      </div>
+      </div>
+      <div class="container1">
+        <div class="container-1">
+          <span>清除图片缓存</span>
+          <svg class="container-1-right" aria-hidden="true">
+            <use xlink:href="#icon-you"></use>
+          </svg>
+        </div>
+        <div class="container-1">
+          <span>清除文件缓存</span>
+        </div>
+      </div>
+      <div class="container1">
+        <div class="container-1">
+          <span>黑名单管理</span>
+          <svg class="container-1-right" aria-hidden="true">
+            <use xlink:href="#icon-you"></use>
+          </svg>
+        </div>
+        <div class="container-1">
+          <span>更换手机号</span>
+        </div>
+      </div>
+      <div class="container1">
+        <div class="container-1">
+          <span>常见问题</span>
+          <svg class="container-1-right" aria-hidden="true">
+            <use xlink:href="#icon-you"></use>
+          </svg>
+        </div>
+        <div class="container-1" @click="round">
+          <span>关于我们</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer" @click="tologin">
+      <span class="footer-span">退出账号</span>
     </div>
   </div>
-  <div class="container">
-    <div class="container1">
-      <div class="container-1">
-        <span>通知管理</span>
-        <svg class="container-1-right" aria-hidden="true">
-          <use xlink:href="#icon-you"></use>
-        </svg>
-      </div>
-      <div class="container-1">
-      <span>公开关注关系</span>
-    </div>
-    </div>
-    <div class="container1">
-      <div class="container-1">
-        <span>清除图片缓存</span>
-        <svg class="container-1-right" aria-hidden="true">
-          <use xlink:href="#icon-you"></use>
-        </svg>
-      </div>
-      <div class="container-1">
-        <span>清除文件缓存</span>
-      </div>
-    </div>
-    <div class="container1">
-      <div class="container-1">
-        <span>黑名单管理</span>
-        <svg class="container-1-right" aria-hidden="true">
-          <use xlink:href="#icon-you"></use>
-        </svg>
-      </div>
-      <div class="container-1">
-        <span>更换手机号</span>
-      </div>
-    </div>
-    <div class="container1">
-      <div class="container-1">
-        <span>常见问题</span>
-        <svg class="container-1-right" aria-hidden="true">
-          <use xlink:href="#icon-you"></use>
-        </svg>
-      </div>
-      <div class="container-1">
-        <span>关于我们</span>
-      </div>
-    </div>
-  </div>
-  <div class="header">
-    <span class="header-span">退出账号</span>
-  </div>
-</div>
 </template>
 
 <script>
   export default {
-    name: 'settingup'
+    name: 'settingup',
+    data() {
+      return {
+      };
+    },
+    created() {
+    },
+    mounted() {
+    },
+    methods: {
+      round() {
+        alert(1);
+      }
+    }
+    // methods: {
+    //   tologin() {
+    //     alert(1);
+    //   },
+    //   quit() {
+    //     alert(333);
+    //     console.log(1);
+    //     window.localStorage.clear();
+    //     localStorage.removeItem('UserInfo');
+    //     alert(1);
+    //     // this.$router.push('/login');
+    //   }
+    // }
   };
 </script>
 
 <style scoped>
   .header-return {
-    /*padding-top: 21px;*/
-    /*padding-left: 8px;*/
     height: 55px;
-    /*border: 2px red solid;*/
   }
   .header-container {
     height: 55px;
-    /*margin-left: -10px;*/
     border-bottom: 3px #F8F8F8 solid;
   }
   .header-container-center {
-    /*border: #5d656b 2px solid;*/
     color: black;
     font-size: 16px;
     margin: 10px 14px;
@@ -115,9 +136,7 @@
     border-bottom: #ececec 1px solid;
   }
   .container-1 {
-    font-size: 14.5px;
-    /*height: 60px;*/
-    /*border: #FDE344 2px solid;*/
+    font-size: 14px;
     padding: 7px 0 7px 0;
     line-height: 30px;
   }
@@ -134,11 +153,11 @@
   }
 
 /*  底部*/
-  .header {
+  .footer {
     color: black;
     font-size: 15px;
     height: 50px;
-    border-top: #ececec 1.5px solid;
+    border-top: #ececec 1px solid;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -146,7 +165,7 @@
     bottom: 0;
     width: 100%;
   }
-  .header-span {
+  .footer-span {
     line-height: 45px;
   }
 </style>

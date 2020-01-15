@@ -295,7 +295,17 @@ const routes = [
   {
     path: '/settingup',
     name: 'settingup',
-    component: () => import('pages/personal/settingup')
+    component: () => import('pages/personal/setingup')
+  },
+  {
+    path: '/inform',
+    name: 'inform',
+    component: () => import('pages/personal/setingup/inform')
+  },
+  {
+    path: '/about-us',
+    name: 'about-us',
+    component: () => import('pages/personal/setingup/about-us')
   },
   {
     path: '/skillBranch',
@@ -318,6 +328,11 @@ const routes = [
     component: () => import('pages/buySkill')
   },
   {
+    path: '/paySuccess',
+    name: 'paySuccess',
+    component: () => import('pages/buySkill/paySuccess')
+  },
+  {
     path: '/comment',
     name: 'comment',
     component: () => import('pages/skillDetail/comment')
@@ -326,6 +341,11 @@ const routes = [
     path: '/discussion',
     name: 'discussion',
     component: () => import('pages/discussion')
+  },
+  {
+    path: '/IssuePost',
+    name: 'issuePost',
+    component: () => import('pages/discussion/issuePost')
   },
   {
     path: '/news',
@@ -371,6 +391,21 @@ const routes = [
     path: '/skill-build',
     name: 'skill-build',
     component: () => import('pages/release/skillBuild')
+  },
+  {
+    path: '/skillApprove',
+    name: 'skillApprove',
+    component: () => import('pages/release/skillApprove')
+  },
+  {
+    path: '/playLabel',
+    name: 'playLabel',
+    component: () => import('pages/release/playLabel')
+  },
+  {
+    path: '/skillPlay',
+    name: 'skillPlay',
+    component: () => import('pages/release/skillPlay')
   },
   {
     path: '*',

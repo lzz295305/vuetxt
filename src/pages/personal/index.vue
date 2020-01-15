@@ -15,17 +15,24 @@
       <div class="header-container">
         <div class="header-1">
           <div class="header-img">
-            <router-link to="/personaldata"><a href="#"><img src="https://cdn.xgl6.top/img/9ef126f301f12078f30713097fc4c1e.png" alt=""></a></router-link>
+            <router-link to="/personaldata">
+              <a href="#">
+              <img src="https://cdn.xgl6.top/img/9ef126f301f12078f30713097fc4c1e.png" alt="">
+              </a>
+            </router-link>
             <div class="header-Id">
-              <span>猎人_165481</span>
+              <span>{{username}}</span>
               <router-link to="/personaldata">
                 <svg class="header-img-right" aria-hidden="true">
                   <use xlink:href="#icon-you"></use>
                 </svg>
               </router-link>
-              <div class="grade">
-                <a href="#">ID:165481</a>
-                <span>lv.1</span>
+              <div class="grade" v-show="login">
+                <a href="#">ID:{{number}}</a>
+                <span>lv.{{grade}}</span>
+              </div>
+              <div class="icon-z" v-show="!login" @click="tologin">
+                登录
               </div>
             </div>
           </div>
@@ -191,22 +198,24 @@
       </div>
       <div class="container-8">
         <span class="container-8-span-1">其他功能</span>
+        <div class="containert-80">
           <router-link to="/my-relationship">
             <div>
-             <svg class="order-container-11" aria-hidden="true">
+              <svg class="order-container-11" aria-hidden="true">
                 <use xlink:href="#icon-yaoqinghaoyou"></use>
               </svg>
               <a class="order-container-11-word">我的关系</a>
             </div>
           </router-link>
-            <div>
-              <van-cell is-link @click="showPopup">
-                <svg class="order-container-12" aria-hidden="true">
-                  <use xlink:href="#icon-yaoqinghaoyou1"></use>
-                </svg>
-              </van-cell>
-              <span class="order-container-12-word">补填邀请码</span>
-            </div>
+          <div>
+            <!--              <van-cell is-link @click="showPopup">-->
+            <!--                <svg class="order-container-12" aria-hidden="true">-->
+            <!--                  <use xlink:href="#icon-yaoqinghaoyou1"></use>-->
+            <!--                </svg>-->
+            <!--              </van-cell>-->
+            <span class="order-container-12-word" @click="invite">补填邀请码</span>
+          </div>
+        </div>
       </div>
       <div class="container-9">
         <router-link to="/redact"><span>编辑</span></router-link>
@@ -214,48 +223,74 @@
       <div class="container-10">
       </div>
     </me-scroll>
-    <van-popup v-model="show" round :style="{ height: '23%',width:'70%' }">
+    <popup v-model="show" round :style="{ height: '23%',width:'70%' }">
       <div class="Invitation-code">
         <div>
           <span>补填我收到的邀请码</span>
           <input type="text" maxlength="6" style="text-align: center;margin: 20px 0 ;width: 70%; font-size: 25px;
-          border-bottom: #5d656b 0.5px solid;">
+          border-bottom: #5d656b 0.5px solid;" v-model="context">
         </div>
         <div class="Invitation-header">
-          <span class="Invitation-header-span1">确定</span>
-          <span class="Invitation-header-span2">取消</span>
+          <span class="Invitation-header-span1" @click="ToData">确定</span>
+          <span class="Invitation-header-span2" @click="abolish">取消</span>
         </div>
       </div>
-    </van-popup>
+    </popup>
   </div>
 </template>
 
 <script>
-  import Axios from 'axios';
   import MeScroll from 'base/scroll/index.vue';
+  import { HappyScroll } from 'vue-happy-scroll';
+  import {Popup} from 'vant';
+  import axios from 'axios';
   export default {
     name: 'Personal',
     data() {
       return {
         show: false,
-        value: 4.5
+        value: 4.5,
+        context: '',
+        username: '',
+        number: '',
+        grade: '',
+        login: false
       };
     },
     components: {
-      MeScroll
+      MeScroll,
+      Popup,
+      HappyScroll
+    },
+    created() {
+      this.getData();
     },
     methods: {
+      getData() {
+        let user = localStorage.getItem('UserInfo');
+        if (user) {
+          let users = JSON.parse(user);
+          this.username = users.username;
+          this.number = users.number;
+          this.grade = users.grade;
+          this.login = true;
+        } else {
+          this.username = '';
+          this.number = '';
+          this.grade = '';
+        }
+      },
+      tologin() {
+        this.$router.push('/login/login');
+      },
       go() {
         this.$router.push('/issueskill');
       },
       back() {
         this.$router.go(-1);
       },
-      showPopup() {
-        this.show = true;
-      },
       init() {
-        Axios.get('http://192.168.0.5:8080/aliPay/wapPay/1/1/1').then(result => {
+        axios.get('http://192.168.0.5:8080/aliPay/wapPay/1/1/1').then(result => {
           let jieguo = result.data;
           const div = document.createElement('div');
           div.innerHTML = jieguo;
@@ -264,6 +299,38 @@
         }).catch(err => {
           console.log(err);
         });
+      },
+      invite() {
+        let user = localStorage.getItem('UserInfo');
+        let userId = JSON.parse(user).number;
+        axios.get('http://192.168.0.9:8080/user/codenull/' + userId).then(res => {
+          console.log(res.data);
+          if (res.data !== null) {
+            this.show = true;
+          } else {
+            alert('你已有邀请码');
+          }
+        }).catch(err => {
+          console.log(err);
+        });
+      },
+      ToData() {
+        let user = localStorage.getItem('UserInfo');
+        let userId = JSON.parse(user).number;
+        let code = this.context;
+        axios.get('http://192.168.0.9:8080//user/writeicode/' + userId + '/' + code).then(res => {
+          if (res.data === '存储成功') {
+            this.show = false;
+            alert('填写成功');
+          } else {
+            alert('填写失败，请重新填写');
+          }
+        }).catch(err => {
+          console.log(err);
+        });
+      },
+      abolish() {
+        this.show = false;
       }
     }
   };
@@ -705,7 +772,8 @@
     }
   .order-container-12-word {
     float: left;
-    margin: 87px 0 0 -45px;
+    margin-right: 20px;
+    margin-top: 77px;
     }
 
 /*  编辑*/
@@ -755,5 +823,15 @@
     font-size: 15px;
     float: right;
     width: 49%;
+  }
+  .containert-80 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .icon-z {
+    font-size: 20px;
+    color: black;
+    margin-left: 20px;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <me-navbar class="header" v-show="visible">
-    <i class="iconfont" slot="left"></i>
+    <i class="iconfont icon-fanhui" slot="left" @click="back"></i>
     <span slot="title">猎人讨论区</span>
     <i class="iconfont icon-xiaoxi" slot="right"></i>
   </me-navbar>
@@ -26,6 +26,9 @@
       },
       hide() {
         this.visible = false;
+      },
+      back() {
+        this.$router.go(-1);
       }
     }
   };
@@ -40,12 +43,8 @@
     }
 
     .iconfont {
-      color:$icon-color-default;
+      color: black;
       font-size: $icon-font-size;
-    }
-
-    .icon-xiaoxi{
-      color: #080808;
     }
   }
 </style>

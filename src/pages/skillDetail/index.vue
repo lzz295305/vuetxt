@@ -57,7 +57,12 @@
       },
       init() {
         let skillId = this.$route.query.id;
-        this.TOBuy(skillId);
+        let UserInfo = localStorage.getItem('UserInfo');
+        if (UserInfo === null) {
+          this.$router.push('/login');
+        } else {
+          this.TOBuy(skillId);
+        }
       },
       TOBuy(key) {
         this.$router.push({

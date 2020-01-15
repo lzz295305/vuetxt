@@ -84,6 +84,8 @@
           </span>
         </div>
       </div>
+      <div class="go-back" v-show="goBackState" @click="goBack">回去</div>
+      <iframe v-show="iframeState" id="show-iframe"  frameborder=0 name="showHere" scrolling=auto src=""></iframe>
     </div>
 </template>
 
@@ -103,7 +105,9 @@
         price: '',
         skillId: '',
         skillUserId: '',
-        number: ''
+        number: '',
+        iframeState: '',
+        goBackState: ''
       };
     },
     components: {
@@ -117,7 +121,24 @@
     created() {
       this.init();
     },
+    mounted() {
+      const oIframe = document.getElementById('show-iframe');
+      const deviceWidth = document.documentElement.clientWidth;
+      const deviceHeight = document.documentElement.clientHeight;
+      oIframe.style.width = deviceWidth + 'px';
+      oIframe.style.height = deviceHeight + 'px';
+    },
     methods: {
+      goBack() {
+        console.log('回到主页');
+        this.goBackState = false;
+        this.iframeState = false;
+      },
+      showIframe() {
+        console.log('显示iframe');
+        this.goBackState = true;
+        this.iframeState = true;
+      },
       onchange(value) {
         this.price = this.OldMoney * value;
         // 技能数量
@@ -139,24 +160,52 @@
           console.log(err);
         });
       },
+      ToPay1() {
+        this.$router.push('/paySuccess');
+      },
       ToPay() {
         const data = {};
         data.soSkillnumber = this.skillId;
         data.soSkilluser = this.skillUserId;
         // 用户登录
         let User = localStorage.getItem('UserInfo');
-        data.soBuyusernumber = User.number;
+        let user = JSON.parse(User);
+        data.soBuyusernumber = user.number;
         data.soQuantity = this.number;
         // 状态码
         data.radio = this.radio;
         data.soMoney = this.price;
-        axios.post('http://192.168.0.5:8080/skillorder/Order', data).then(result => {
+        axios.post('http://api.qiandao.xgl6.top/skillorder/Order', data).then(result => {
           console.log(result.data);
           let skillorderid = result.data;
           let title = this.OldTitle;
           let money = this.price;
-          axios.post('http://192.168.0.5:8080/aliPay/wapPay/' + title + '/' + skillorderid + '/' + money).then(result => {
-            console.log(666);
+          axios.get('http://api.qiandao.xgl6.top/aliPay/wapPay/' + title + '/' + skillorderid + '/' + money).then(result => {
+            let form = result.data;
+            let iframe = document.getElementById('show-iframe');
+            const div = document.createElement('div');
+            div.innerHTML = form;
+            iframe.appendChild(div);
+            document.forms[0].submit();
+            setInterval(() => {
+              axios.get('http://api.qiandao.xgl6.top/aliPay/queryPay/' + skillorderid).then(res => {
+                let i = res.data;
+                if (i === 1) {
+                  alert(1);
+                  // 付款成功
+                  // clearInterval(taskId);
+                  // ly.store.del("CY_PAY");
+                  // // 跳转到付款成功页
+                  // location.href = "/paysuccess.html?orderId=" + this.orderId;
+                } else if (i === 2) {
+                  alert(2);
+                  // // 付款失败
+                  // clearInterval(taskId);
+                  // // 跳转到付款失败页
+                  // location.href = "/payfail.html";
+                }
+              });
+            }, 3000);
           }).catch(err => {
             console.log(err);
           });

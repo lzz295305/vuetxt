@@ -10,7 +10,7 @@
       </div>
       <div class="limit-first" v-show="!budget">
         <p class="first-title">任务预计奖励次数</p>
-        <input class="explain-input" type="text" placeholder="最低20次">
+        <input class="explain-input" type="text" placeholder="最低20次" v-model="award">
       </div>
       <div class="limit-first" v-show="budget">
         <p class="first-title">总预算(人名币 元)</p>
@@ -18,7 +18,7 @@
       </div>
       <div class="limit-first">
         <p class="first-title">任务奖励单价(人民币 元)</p>
-        <input class="explain-input" type="text" placeholder="请填写任务单价">
+        <input class="explain-input" type="text" placeholder="请填写任务单价" v-model="price">
       </div>
       <div class="limit-first">
         <p class="first-title">持续时间</p>
@@ -69,7 +69,9 @@
     name: 'taskLimit',
     data() {
       return {
-        NewNumber: 1,
+        NewNumber: '1',
+        award: '',
+        price: '',
         NewDay: 30,
         NewTime: 6,
         NewHour: '24小时',
@@ -108,6 +110,16 @@
       onConfirm(value) {
         this.NewHour = value;
         this.show = false;
+      },
+      limit1() {
+        let TaskInfo = JSON.parse(sessionStorage.getItem('TaskInfo'));
+        TaskInfo.taskFinishNumber = this.NewNumber;
+        TaskInfo.taskRewardNumber = this.award;
+        TaskInfo.taskRewardMoney = this.price;
+        TaskInfo.taskTime = this.NewDay;
+        TaskInfo.taskCommitTime = this.NewTime;
+        TaskInfo.taskWaitCheckTime = this.NewHour;
+        sessionStorage.setItem('TaskInfo', JSON.stringify(TaskInfo));
       }
     }
   };

@@ -1,27 +1,23 @@
 <template>
+<!--  发布技能详情页面-->
     <div class="skill">
       <me-navbar class="header">
         <i class="iconfont icon-guanbi" slot="left" @click="back"></i>
         <i class="iconfont" slot="title">创建技能-选择分类</i>
       </me-navbar>
-      <ul class="container">
-        <li @click="ToFound">
-          个人成长
+      <ul class="container" v-show="!skill">
+        <li @click="ToFound(index, item.stContent, item.stNumber)" v-for="(item, index) in classify" :key="index">
+          {{item.stContent}}
         </li>
-        <li>
-          爱情婚姻
-        </li>
-        <li>
-          子女教育
-        </li>
-        <li>
-          职场心理
-        </li>
-        <li>
-          综合治愈
-        </li>
-        <li>
-          其他
+      </ul>
+<!--      专业技能-->
+      <ul class="container" v-show="skill">
+        <li @click="ToFound1(index)" v-for="(item, index) in classify" :key="index" class="info">
+          <div>
+            {{item.stContent}}
+          </div>
+          <i class="iconfont icon-you">
+          </i>
         </li>
       </ul>
     </div>
@@ -29,24 +25,68 @@
 
 <script>
   import MeNavbar from 'base/navbar';
+  import axios from 'axios';
   export default {
     name: 'skill',
     data() {
       return {
+        classify: [],
+        skill: false
       };
     },
     components: {
       MeNavbar
     },
+    created() {
+      this.init();
+    },
     methods: {
+      init() {
+        if (this.$route.query.id < 4) {
+          let pubId = this.$route.query.id + 1;
+          axios.get('http://api.qiandao.xgl6.top/pubSkill/getSkills/' + pubId).then(res => {
+            this.classify = res.data;
+          }).catch(err => {
+            console.log(err);
+          });
+        } else {
+          this.skill = true;
+          let pubId = this.$route.query.id + 1;
+          axios.get('http://api.qiandao.xgl6.top/pubSkill/getSkills/' + pubId).then(res => {
+            this.classify = res.data;
+          }).catch(err => {
+            console.log(err);
+          });
+        }
+      },
       back() {
         this.$router.push('/home');
       },
-      ToFound() {
+      ToFound(index, title, oneself) {
+        if (this.$route.query.title !== '游戏电玩') {
+          this.$router.push({
+            path: '/skill-creation',
+            query: {
+              id: index,
+              name: title
+            }
+          });
+        } else {
+          this.$router.push({
+            path: '/skillApprove',
+            query: {
+              id: index,
+              name: title,
+              number: oneself
+            }
+          });
+        }
+      },
+      ToFound1(index) {
         this.$router.push({
-          path: '/skill-creation',
+          path: '/skillPlay',
           query: {
-            id: 1
+            id: index
           }
         });
       }
@@ -75,5 +115,10 @@
     margin-top: 10px;
     margin-bottom: 30px;
     font-size: 14px;
+  }
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 </style>

@@ -4,35 +4,39 @@
     <div class="header">
       <span class="header-span">共关注1位猎人</span>
     </div>
-    <div class="container">
-      <div class="container-1">
-        <img src="https://cdn.xgl6.top/img/9ef126f301f12078f30713097fc4c1e.png" alt="">
-      </div>
-      <div class="container-left">
-        <span class="container-span1">点我头像关注我</span><br>
-        <span style="font-size: 13px;margin-left: 6px">ID:820207</span>
-      </div>
-      <div class="container-right">
-        <van-cell is-link @click="showPopup">
-          <svg class="header-img-right" aria-hidden="true">
-            <use xlink:href="#icon-guanzhu"></use>
-          </svg>
-        </van-cell>
-      </div>
-      <div>
-        <van-popup v-model="show" round position="bottom" :style="{ height: '25%' }">
-          <div class="header-span1">
-            <span>取消关注对方？</span>
+    <ul>
+      <li v-for="(item, index) in attention" :key="index">
+        <div class="container">
+          <div class="container-1">
+            <img :src="item.images" alt="">
           </div>
-            <div class="header-span2">
-              <a style="color: red">确定</a>
-            </div>
-            <div class="header-span3">
-              <a style="color: black">取消</a>
-            </div>
-        </van-popup>
-      </div>
-    </div>
+          <div class="container-left">
+            <span class="container-span1">{{item.username}}</span><br>
+            <span style="font-size: 13px;margin-left: 6px">ID:{{item.number}}</span>
+          </div>
+          <div class="container-right">
+            <van-cell is-link @click="showPopup">
+              <svg class="header-img-right" aria-hidden="true">
+                <use xlink:href="#icon-guanzhu"></use>
+              </svg>
+            </van-cell>
+          </div>
+          <div>
+            <van-popup v-model="show" round position="bottom" :style="{ height: '25%' }">
+              <div class="header-span1">
+                <span>取消关注对方？</span>
+              </div>
+              <div class="header-span2">
+                <a style="color: red">确定</a>
+              </div>
+              <div class="header-span3">
+                <a style="color: black">取消</a>
+              </div>
+            </van-popup>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
 </template>
@@ -42,12 +46,26 @@
     name: 'my-attention',
     data() {
       return {
-        show: false
+        show: false,
+        attention: []
       };
+    },
+    created() {
+      this.init();
     },
     methods: {
       showPopup() {
         this.show = true;
+      },
+      init() {
+        let user = localStorage.getItem('UserInfo');
+        user = JSON.parse(user);
+        let UserId = user.number;
+        this.$http.get('/user/attention/' + UserId, res => {
+          this.attention = res;
+        }, err => {
+          console.log(err);
+        });
       }
     }
   };

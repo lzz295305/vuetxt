@@ -7,9 +7,9 @@
       <task-info class="taskDetail-info"/>
     </me-scroll>
     <div class="task-footer">
-      <router-link class="footer-item" to="/home">
+      <div class="footer-item" @click="ToDetail">
         <span>接受任务</span>
-      </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +29,14 @@
       TaskMain,
       TaskInfo,
       MeScroll
+    },
+    methods: {
+      ToDetail() {
+        let UserInfo = localStorage.getItem('UserInfo');
+        if (UserInfo === null) {
+          this.$router.push('/login');
+        }
+      }
     }
   };
 </script>

@@ -98,7 +98,7 @@
     methods: {
       init() {
         let skillId = this.$route.query.id;
-        axios.get('http://192.168.0.5:8080/skills/sel/' + skillId).then(result => {
+        axios.get('http://api.qiandao.xgl6.top/skills/sel/' + skillId).then(result => {
           this.skillList.push(result.data.skillsinfo);
           this.evaluate.push(result.data.skillcomments);
           this.userList = result.data.users.username;

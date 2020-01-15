@@ -73,7 +73,7 @@
         });
       },
       init() {
-        axios.get('http://192.168.0.5:8080/skills/selAll').then(result => {
+        axios.get('http://api.qiandao.xgl6.top/skills/selAll').then(result => {
           let goodsData = result.data;
           sessionStorage.setItem('skill', JSON.stringify(goodsData));
           this.skillList = goodsData;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://192.168.0.205:8080';
+const baseUrl = 'http://192.168.0.9:8080';
 
 let HttpUtil = {
   get: function (url, fn, errFn) {

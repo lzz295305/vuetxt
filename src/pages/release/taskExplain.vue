@@ -19,7 +19,7 @@
           任务标题
         </h3>
         <div class="second-center">
-          <input class="explain-input" type="text" placeholder="标题需要清晰明确，不要模棱两可">
+          <input class="explain-input" type="text" placeholder="标题需要清晰明确，不要模棱两可" v-model="TaskData.taskTitle">
         </div>
       </div>
       <div class="explain-third">
@@ -27,8 +27,8 @@
           任务描述
         </h3>
         <div class="third-center">
-          <input class="explain-input" type="text" placeholder="简单介绍任务内容，最多添加4张图片">
-          <uploader :after-read="afterRead" :max-count="4" multiple/>
+          <input class="explain-input" type="text" placeholder="简单介绍任务内容，最多添加4张图片" v-model="TaskData.taskText">
+          <uploader :after-read="afterRead" :max-count="4" multiple v-model="TaskData.tiMsimg"/>
         </div>
       </div>
     </div>
@@ -42,7 +42,14 @@
       return {
         fileList: [],
         title: '',
-        index: ''
+        index: '',
+        TaskData: {
+          taskTitle: '',
+          taskText: '',
+          tiMsimg: [
+            {}
+          ]
+        }
       };
     },
     components: {
@@ -53,6 +60,9 @@
       this.getId();
     },
     methods: {
+      explain1() {
+        sessionStorage.setItem('TaskInfo', JSON.stringify(this.TaskData));
+      },
       afterRead(file) {
         // 此时可以自行将文件上传至服务器
         console.log(file);

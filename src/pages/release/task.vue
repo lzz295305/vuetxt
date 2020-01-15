@@ -8,16 +8,16 @@
       <div class="task-context">
         <happy-scroll>
           <div v-if="index == 1" class="context">
-            <task-explain />
-            <task-step />
-            <task-limit class="task-limit"/>
+            <task-explain ref="explain"/>
+            <task-step ref="step"/>
+            <task-limit class="task-limit" ref="limit"/>
           </div>
           <div v-if="index == 2">
-            <task-questionnaire />
+            <task-questionnaire ref="questionnaire"/>
           </div>
         </happy-scroll>
       </div>
-      <div class="footer">
+      <div class="footer" @click="submit">
         <span>立即提交</span>
       </div>
       <action-sheet
@@ -44,6 +44,7 @@
   import { HappyScroll } from 'vue-happy-scroll';
   import MeScroll from 'base/scroll';
   import TaskQuestionnaire from './taskQuestionnaire';
+  import axios from 'axios';
   export default {
     name: 'task',
     components: {
@@ -115,6 +116,20 @@
         } else {
           this.show2 = false;
         }
+      },
+      // 提交
+      submit() {
+        this.$refs.explain.explain1();
+        this.$refs.step.step1();
+        this.$refs.limit.limit1();
+        let data = JSON.parse(sessionStorage.getItem('TaskInfo'));
+        let user = JSON.parse(localStorage.getItem('UserInfo'));
+        data.userId = user.number;
+        data.taskType = this.$route.query.id + 1;
+        data.auditId = 1;
+        axios.post('http://api.qiandao.xgl6.top/pubTask/pubCommunity', data).then(res => {
+          alert(res.data);
+        }).catch();
       }
     }
   };

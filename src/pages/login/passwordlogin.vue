@@ -1,20 +1,20 @@
 <template>
-<div>
-  <div class="container-input">
-    <span style="color:#000; font-size: 18px;margin-right: 10px">手机号</span>
-    <input type="text" class="input1" style="color:black; font-size: 18px;background-color: transparent;"
-           placeholder="输入手机号" maxlength="11" v-model="usernameModel">
-    <p class="register-show">{{ userErrors.errorText }}</p>
-
-    <br><span style="color:#000; font-size: 18px;">密&nbsp;&nbsp;&nbsp;码</span>
-    <input type="password" class="input2"
-           style="color:black;font-size: 18px;background-color: transparent;"
-           placeholder="输入密码" v-model="passwordModel">
+  <div>
+    <div class="container-input">
+      <span style="color:#000; font-size: 18px;margin-right: 10px">手机号</span>
+      <input type="text" class="input1" style="color:black; font-size: 18px;background-color: transparent;"
+             placeholder="输入手机号" maxlength="11" v-model="usernameModel">
+      <p class="register-show">{{ userErrors.errorText }}</p>
+      <br>
+      <span style="color:#000; font-size: 18px;">密&nbsp;&nbsp;&nbsp;码</span>
+      <input type="password" class="input2"
+             style="color:black;font-size: 18px;background-color: transparent;"
+             placeholder="输入密码" v-model="passwordModel">
+    </div>
+    <div class="button">
+       <spqn style="font-size: 17px;" @click="toHome">登录</spqn>
+    </div>
   </div>
-  <div class="button">
-     <spqn style="font-size: 17px;" @click="toHome">登录</spqn>
-  </div>
-</div>
 </template>
 
 <script>

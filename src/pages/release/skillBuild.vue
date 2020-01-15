@@ -1,4 +1,5 @@
 <template>
+<!--  创建技能二页面-->
     <div class="build">
       <me-navbar class="header">
         <i class="iconfont icon-guanbi" slot="left" @click="showPopup"></i>
@@ -14,13 +15,13 @@
       <div class="build-container" @click="pay">
         <span class="container-title">交付时间</span>
         <div>
-          {{NewDay}}
+          {{NewDay}}天
           <i class="iconfont icon-you"></i>
         </div>
       </div>
       <div class="build-center">
         <p>报价 :</p>
-        <input class="explain-input" type="text" placeholder="最低5">
+        <input class="explain-input" type="text" placeholder="最低5" v-model="NewMoney">
       </div>
       <div class="build-center">
         <p>偏好接单时间 :</p>
@@ -60,7 +61,7 @@
       >
         <picker
           :columns="columns"
-          :default-index="4"
+          :default-index="3"
           show-toolbar
           title="可修改次数"
           @cancel="upCancel"
@@ -117,10 +118,12 @@
 <script>
   import MeNavbar from 'base/navbar';
   import { ActionSheet, Popup, Picker, DatetimePicker } from 'vant';
+  import axios from 'axios';
   export default {
     name: 'SkillBuild',
     data() {
       return {
+        NewMoney: '',
         title: '个人成长',
         show: false,
         actions: [
@@ -141,16 +144,16 @@
           '9',
           '10'
         ],
-        NewDay: '1天',
+        NewDay: '1',
         ShowPay: false,
         columns1: [
-          '1天',
-          '2天',
-          '3天',
-          '4天',
-          '5天',
-          '6天',
-          '7天'
+          '1',
+          '2',
+          '3',
+          '4',
+          '5',
+          '6',
+          '7'
         ],
         ShowOrder1: false,
         ShowOrder2: false,
@@ -167,7 +170,13 @@
       Picker,
       DatetimePicker
     },
+    created() {
+      this.init();
+    },
     methods: {
+      init() {
+        this.title = this.$route.query.name;
+      },
       // 左上角叉号
       showPopup() {
         this.show = true;
@@ -184,7 +193,22 @@
       },
       // 右下角完成
       ToComplete() {
-        this.$router.push('/home');
+        let data = JSON.parse(sessionStorage.getItem('SkillData'));
+        data.siModifynumber = this.number;
+        data.siDuration = this.NewDay;
+        data.siMoney = this.NewMoney;
+        let times = this.NewTime1 + '-' + this.NewTime2;
+        data.siDate = times;
+        let user = JSON.parse(localStorage.getItem('UserInfo'));
+        data.userId = user.number;
+        data.siType = this.title;
+        console.log(this.title);
+        axios.post('http://api.qiandao.xgl6.top/pubSkill/insertSkill', data).then(res => {
+          alert(res.data);
+          this.$router.push('/home');
+        }).catch(err => {
+          console.log(err);
+        });
       },
       // 可修改次数
       alter() {

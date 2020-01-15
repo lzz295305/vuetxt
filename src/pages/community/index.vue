@@ -1,10 +1,8 @@
 <template>
   <div class="community">
     <com-header/>
-    <me-scroll>
-      <com-nav/>
-      <com-tab/>
-    </me-scroll>
+    <com-nav/>
+    <com-tab/>
   </div>
 </template>
 

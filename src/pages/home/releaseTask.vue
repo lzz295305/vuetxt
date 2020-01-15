@@ -9,7 +9,7 @@
           class="nav-item"
           v-for="(item, index) in navs"
           :key="index"
-          @click="ToTask(item.text)"
+          @click="ToTask(item.text, index)"
         >
           <div class="nav-link">
             <img :src="item.picUrl" class="nav-pic">
@@ -40,11 +40,12 @@
       back() {
         this.$router.go(-1);
       },
-      ToTask(text) {
+      ToTask(text, index) {
         this.$router.push({
           path: '/task-release',
           query: {
-            content: text
+            content: text,
+            id: index
           }
         });
       }

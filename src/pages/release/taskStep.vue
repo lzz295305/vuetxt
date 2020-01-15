@@ -4,23 +4,14 @@
       <div class="step-first">
         <span class="first-title">步骤/要求 :</span>
         <div class="first-center">
-          <input class="explain-input" type="text" placeholder="描述猎人在这步骤应该做什么">
-          <uploader :after-read="afterRead" :max-count="4" multiple upload-text="正确示例"/>
-          <uploader :after-read="afterRead" :max-count="4" multiple upload-text="错误示例"/>
+          <input class="explain-input" type="text" placeholder="描述猎人在这步骤应该做什么" v-model="NewStep">
+          <uploader :after-read="afterRead" :max-count="4" multiple upload-text="正确示例" v-model="fileList"/>
+          <uploader :after-read="afterRead" :max-count="4" multiple upload-text="错误示例" v-model="fileList"/>
         </div>
       </div>
       <div class="step-first">
         <span class="first-title">相关连接 :</span>
-        <input class="explain-input" type="text" placeholder="请填写http://或https://">
-      </div>
-      <div class="step-first">
-        <span class="first-title">本步骤要求猎人提交 :</span>
-        <radio-group v-model="radio" class="choose">
-          <radio name="1" class="radio" checked-color="#FDE344">文字</radio>
-          <radio name="2" class="radio" checked-color="#FDE344">图片</radio>
-          <radio name="3" class="radio" checked-color="#FDE344">文件/视频</radio>
-          <radio name="4" class="radio" checked-color="#FDE344">无</radio>
-        </radio-group>
+        <input class="explain-input" type="text" placeholder="请填写http://或https://" v-model="NewUrl">
       </div>
     </div>
 </template>
@@ -33,7 +24,11 @@
     data() {
       return {
         radio: '4',
-        fileList: []
+        fileList: [
+          {}
+        ],
+        NewStep: '',
+        NewUrl: ''
       };
     },
     components: {
@@ -46,6 +41,13 @@
       afterRead(file) {
         // 此时可以自行将文件上传至服务器
         console.log(file);
+      },
+      step1() {
+        let TaskInfo = JSON.parse(sessionStorage.getItem('TaskInfo'));
+        TaskInfo.taskNeed = this.NewStep;
+        TaskInfo.tiYqimg = this.fileList;
+        TaskInfo.taskLink = this.NewUrl;
+        sessionStorage.setItem('TaskInfo', JSON.stringify(TaskInfo));
       }
     }
   };

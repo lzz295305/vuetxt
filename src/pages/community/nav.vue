@@ -1,48 +1,42 @@
 <template>
   <div class="nav">
     <ul class="nav-max">
-      <li class="nav-min" @click="toDiscussion">
-        <span class="min-title">技能讨论</span>
-        <img class="min-img" src="./img/nav-item-3.png" alt="">
-      </li>
-      <li class="nav-min">
-        <span class="min-title">校园生活</span>
-        <img class="min-img" src="./img/nav-item-4.png" alt="">
-      </li>
-      <li class="nav-min">
-        <span class="min-title">日常灌水</span>
-        <img class="min-img" src="./img/nav-item-5.png" alt="">
-      </li>
-      <li class="nav-min">
-        <span class="min-title">投资艺术</span>
-        <img class="min-img" src="./img/nav-item-6.png" alt="">
-      </li>
-      <li class="nav-min">
-        <span class="min-title">广而告之</span>
-        <img class="min-img" src="./img/nav-item-7.png" alt="">
-      </li>
-      <li class="nav-min">
-        <span class="min-title">吐槽反馈</span>
-        <img class="min-img" src="./img/nav-item-8.png" alt="">
-      </li>
-      <li class="nav-min">
-        <span class="min-title">任务心得</span>
-        <img class="min-img" src="./img/nav-item-1.png" alt="">
-      </li>
-      <li class="nav-min">
-        <span class="min-title">社会故事</span>
-        <img class="min-img" src="./img/nav-item-2.png" alt="">
+      <li class="nav-min" @click="toDiscussion(item.stNumber,item.stContent)" v-for="(item, index) in PostList" :key="index">
+        <span class="min-title">{{item.stContent}}</span>
+        <img class="min-img" :src="item.imageAddress" alt="">
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
     name: 'ComNav',
+    data() {
+      return {
+        PostList: []
+      };
+    },
+    created() {
+      this.init();
+    },
     methods: {
-      toDiscussion() {
-        this.$router.push('/discussion');
+      toDiscussion(index, name) {
+        this.$router.push({
+          path: '/discussion',
+          query: {
+            id: index,
+            title: name
+          }
+        });
+      },
+      init() {
+        axios.get('http://api.qiandao.xgl6.top/pubSkill/getPostclassification').then(res => {
+          this.PostList = res.data;
+        }).catch(err => {
+          console.log(err);
+        });
       }
     }
   };
@@ -63,7 +57,7 @@
   .nav-min {
     width: 48.6%;
     height: 80px;
-    background-color: #080808;
+    background-color: black;
     color: white;
     border-radius: 5px;
     margin-top: 10px;
