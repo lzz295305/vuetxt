@@ -72,7 +72,6 @@
   import MeNavbar from 'base/navbar';
   import { ActionSheet, Uploader } from 'vant';
   import { HappyScroll } from 'vue-happy-scroll';
-  import axios from 'axios';
   export default {
     name: 'SkillCreation',
     data() {
